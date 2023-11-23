@@ -15,9 +15,9 @@ class Ui_MainWindow(object):
         MainWindow.resize(349, 262)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.prodView = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.prodView.setGeometry(QtCore.QRect(180, 100, 111, 91))
-        self.prodView.setObjectName("prodView")
+        self.supp_info = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.supp_info.setGeometry(QtCore.QRect(180, 100, 111, 91))
+        self.supp_info.setObjectName("supp_info")
         self.sup_dash_rawMat = QtWidgets.QPushButton(parent=self.centralwidget)
         self.sup_dash_rawMat.setGeometry(QtCore.QRect(50, 100, 111, 91))
         self.sup_dash_rawMat.setObjectName("sup_dash_rawMat")
@@ -42,6 +42,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.prodView.setText(_translate("MainWindow", "Info"))
-        self.sup_dash_rawMat.setText(_translate("MainWindow", "Raw Materials Supplied"))
+        self.supp_info.setText(_translate("MainWindow", "My Info"))
+        self.sup_dash_rawMat.setText(_translate("MainWindow", "Raw Materials"))
         self.label.setText(_translate("MainWindow", "Supplier"))

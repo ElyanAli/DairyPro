@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="prodView">
+   <widget class="QPushButton" name="supp_info">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Info</string>
+     <string>My Info</string>
     </property>
    </widget>
    <widget class="QPushButton" name="sup_dash_rawMat">
@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Raw Materials Supplied</string>
+     <string>Raw Materials</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">

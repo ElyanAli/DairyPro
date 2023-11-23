@@ -25,42 +25,42 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QLineEdit" name="lineEdit">
+      <widget class="QLineEdit" name="supp_id">
        <property name="text">
         <string>011244</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="titleline">
+      <widget class="QLineEdit" name="supp_name">
        <property name="text">
         <string>Ahsan</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="titleline_2">
+      <widget class="QLineEdit" name="city">
        <property name="text">
-        <string>ahsan345</string>
+        <string>City A</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_2">
+      <widget class="QLineEdit" name="supp_addr">
        <property name="text">
         <string>Karachi</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_3">
+      <widget class="QLineEdit" name="supp_phone">
        <property name="text">
         <string>0378-4567302</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_4">
+      <widget class="QLineEdit" name="supp_email">
        <property name="text">
         <string>ahsan@gmail.com</string>
        </property>
@@ -95,7 +95,7 @@
      <item>
       <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>Password:</string>
+        <string>City</string>
        </property>
       </widget>
      </item>
@@ -122,7 +122,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="closeButton">
     <property name="geometry">
      <rect>
       <x>340</x>
@@ -142,7 +142,7 @@
      <x>0</x>
      <y>0</y>
      <width>501</width>
-     <height>26</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>

@@ -144,7 +144,7 @@ class Login(QtWidgets.QMainWindow):
             elif status == 'Distributor':
                 self.open_distributorDashboard()
             elif status == 'Supplier':
-                self.open_supplierDashboard()
+                self.open_supplierDashboard(id)
             elif status == 'Customer':
                 self.open_customerDashboard()
         else:
@@ -162,9 +162,9 @@ class Login(QtWidgets.QMainWindow):
         #TODO Distributor HERE
         pass
 
-    def open_supplierDashboard(self):
+    def open_supplierDashboard(self, id):
         #TODO Supplier HERE
-        self.suplierDashDialog = supplierDashboard()
+        self.suplierDashDialog = supplierDashboard(id)
         self.suplierDashDialog.show()
         # pass
     
@@ -174,19 +174,82 @@ class Login(QtWidgets.QMainWindow):
 
 
 class supplierDashboard(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(supplierDashboard, self).__init__()
+    def __init__(self, id):
+        super(supplierDashboard, self ).__init__()
 
         uic.loadUi('DB_ConnectionsFiles/DB_project/39 supplier dashboard.ui', self)
         self.setWindowTitle("Suplier Dahboard")
         
         #supplier order clicked
         self.sup_dash_rawMat.clicked.connect(self.open_supplier_rawMat)
+        self.supp_info.clicked.connect(lambda: self.open_supplier_info(id))
     def open_supplier_rawMat(self):
         self.suppOrderview = SupplierRawMaterials()
         self.suppOrderview.show()
         self.suppOrderview.populate_supp_rawMat()
-        pass
+        
+
+    def open_supplier_info(self, id):
+        self.suppInfoView = SupplierInformation(id)
+        self.suppInfoView.show()
+
+
+
+class SupplierInformation(QtWidgets.QMainWindow):
+    def __init__(self, id):
+        super(SupplierInformation, self).__init__()
+        uic.loadUi('DB_ConnectionsFiles/DB_project/43 Supplier info form.ui', self)
+        self.setWindowTitle("Supplier Information")
+
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+
+        #detch data from raw_mat table 
+        query = "select * from Suppliers where supplier_id = ?"
+
+        cursor.execute(query, (id))
+
+        row = cursor.fetchone() 
+        self.closeButton.clicked.connect(self.view_close)
+        # print(row)
+        suppID = row[0]
+        suppName = row[1]
+        suppCity = row[3]
+        suppAdd = row[2]
+        suppPhone = row[4]
+        suppEmail = row[5]
+
+        self.supp_id.setText(str(suppID))
+        self.supp_name.setText(str(suppName))
+        self.city.setText(str(suppCity))
+        self.supp_addr.setText(str(suppAdd))
+        self.supp_phone.setText(str(suppPhone))
+        self.supp_email.setText(str(suppEmail))
+
+        # Disable QLineEdit widgets
+        self.supp_id.setEnabled(False)
+        self.supp_name.setEnabled(False)
+        self.city.setEnabled(False)
+        self.supp_addr.setEnabled(False)
+        self.supp_phone.setEnabled(False)
+        self.supp_email.setEnabled(False)
+
+    def view_close(self):
+        self.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # suppRawMatSearch
 class SupplierRawMaterials(QtWidgets.QMainWindow):
     def __init__(self):
@@ -228,7 +291,7 @@ class SupplierRawMaterials(QtWidgets.QMainWindow):
         supplier_id = self.booksTableWidget.item(selected_row, 2)
         cost = self.booksTableWidget.item(selected_row, 3)
         inventory_level = self.booksTableWidget.item(selected_row, 4)
-        quality_metric = self.booksTableWidget.item(selected_row, 5)
+        # quality_metric = self.booksTableWidget.item(selected_row, 5)
         self.viewMat = viewRawMaterial(material_id, material_name, supplier_id, cost,inventory_level)
         self.viewMat.show()
 
@@ -275,6 +338,13 @@ class viewRawMaterial(QtWidgets.QMainWindow):
         self.sup_id.setText(str(supplier_id.text()))
         self.cost_line.setText(str(cost.text()))
         self.inven_levl.setText(str(inventory_level.text()))
+
+        # Disable QLineEdit widgets
+        self.mat_id.setEnabled(False)
+        self.mat_name.setEnabled(False)
+        self.sup_id.setEnabled(False)
+        self.cost_line.setEnabled(False)
+        self.inven_levl.setEnabled(False)
 
     def view_close(self):
         self.close()
