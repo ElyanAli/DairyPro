@@ -7,11 +7,11 @@ import sys
 import pyodbc
 
 # Replace these with your own database connection details
-server = ''
+server = 'SARAH'
 database = 'DairyPro'  # Name of your Northwind database
 use_windows_authentication = False  # Set to True to use Windows Authentication
-username = ''  # Specify a username if not using Windows Authentication
-password = ''  # Specify a password if not using Windows Authentication
+username = 'sa'  # Specify a username if not using Windows Authentication
+password = 'dbfall2023'  # Specify a password if not using Windows Authentication
 
 # Create the connection string based on the authentication method chosen
 if use_windows_authentication:
@@ -26,7 +26,8 @@ class UI(QtWidgets.QMainWindow):
         super(UI, self).__init__()
 
         # Load the .ui file
-        uic.loadUi('DB_Project/1 User Type.ui', self)
+        
+        uic.loadUi('DB_ConnectionsFiles/DB_project/1 User Type.ui', self)
         self.setWindowTitle("Select Login Type")
         
         self.loginAdmin.clicked.connect(lambda: self.open_Login('Admin'))
@@ -48,7 +49,7 @@ class CreateAccount(QtWidgets.QMainWindow):
     def __init__(self):
         super(CreateAccount, self).__init__()
 
-        uic.loadUi('DB_project/2 Sign up.ui', self)
+        uic.loadUi('DB_ConnectionsFiles/DB_project/2 Sign up.ui', self)
         self.setWindowTitle("Create Account")
 
         self.createAccount_button.clicked.connect(self.insertCreate)
@@ -112,7 +113,7 @@ class Login(QtWidgets.QMainWindow):
         super(Login, self).__init__()
 
         # Load the .ui file
-        uic.loadUi('DB_Project/3 Login screen.ui', self)
+        uic.loadUi('DB_ConnectionsFiles/DB_Project/3 Login screen.ui', self)
 
         # Connect Submit Button to Event Handling Code
         self.logInButton.clicked.connect(self.logIn)
@@ -163,11 +164,123 @@ class Login(QtWidgets.QMainWindow):
 
     def open_supplierDashboard(self):
         #TODO Supplier HERE
-        pass
+        self.suplierDashDialog = supplierDashboard()
+        self.suplierDashDialog.show()
+        # pass
     
     def open_customerDashboard(self):
         #TODO Customer HERE
         pass
+
+
+class supplierDashboard(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(supplierDashboard, self).__init__()
+
+        uic.loadUi('DB_ConnectionsFiles/DB_project/39 supplier dashboard.ui', self)
+        self.setWindowTitle("Suplier Dahboard")
+        
+        #supplier order clicked
+        self.sup_dash_rawMat.clicked.connect(self.open_supplier_rawMat)
+    def open_supplier_rawMat(self):
+        self.suppOrderview = SupplierRawMaterials()
+        self.suppOrderview.show()
+        self.suppOrderview.populate_supp_rawMat()
+        pass
+# suppRawMatSearch
+class SupplierRawMaterials(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(SupplierRawMaterials, self).__init__()
+        
+        uic.loadUi('DB_ConnectionsFiles/DB_project/40 Supplier Order form.ui', self)
+        self.setWindowTitle("Materials Supplied")
+
+        self.supp_order_search.clicked.connect(self.suppMaterialSearch)
+        self.viewButton.clicked.connect(self.viewMaterial_clicked)
+        self.closeButton.clicked.connect(self.view_close)
+
+        
+
+    def populate_supp_rawMat(self):
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+
+        # Clear existing rows in the table
+        self.booksTableWidget.setRowCount(0)
+
+        #detch data from raw_mat table 
+        cursor.execute("select * from Raw_Material")
+
+        # Fetch all rows and populate the table
+        for row_index, row_data in enumerate(cursor.fetchall()):
+            self.booksTableWidget.insertRow(row_index)
+            for col_index, cell_data in enumerate(row_data):
+                item = QTableWidgetItem(str(cell_data))
+                self.booksTableWidget.setItem(row_index, col_index, item)
+
+        #close database connection
+        connection.close()
+
+    def viewMaterial_clicked(self):
+        selected_row = self.booksTableWidget.currentRow()
+        material_id = self.booksTableWidget.item(selected_row, 0)
+        material_name = self.booksTableWidget.item(selected_row, 1)
+        supplier_id = self.booksTableWidget.item(selected_row, 2)
+        cost = self.booksTableWidget.item(selected_row, 3)
+        inventory_level = self.booksTableWidget.item(selected_row, 4)
+        quality_metric = self.booksTableWidget.item(selected_row, 5)
+        self.viewMat = viewRawMaterial(material_id, material_name, supplier_id, cost,inventory_level)
+        self.viewMat.show()
+
+    def view_close(self):
+        self.close()
+
+    def suppMaterialSearch(self):
+        material_id = self.supp_mat_id.text()
+        supp_id = self.supp_id.text()
+        material_name = self.mat_name.text()
+
+        for row in range(self.booksTableWidget.rowCount()):
+            m_id = self.booksTableWidget.item(row, 0).text() if self.booksTableWidget.item(row, 0) is not None else ""
+            s_id = self.booksTableWidget.item(row, 2).text() if self.booksTableWidget.item(row, 1) is not None else ""
+            m_name = self.booksTableWidget.item(row, 1).text() if self.booksTableWidget.item(row, 2) is not None else ""
+            
+            if not material_id and not supp_id and not material_name:
+                self.booksTableWidget.setRowHidden(row, False)
+            else:
+                # Show the row if at least one criterion matches
+                if m_id == material_id or s_id == supp_id or m_name == material_name:
+                    self.booksTableWidget.setRowHidden(row, False)
+                else:
+                    self.booksTableWidget.setRowHidden(row, True)
+
+class viewRawMaterial(QtWidgets.QMainWindow):
+    def __init__(self, material_id, material_name, supplier_id, cost, inventory_level):
+        super(viewRawMaterial, self).__init__()
+        
+        uic.loadUi('DB_ConnectionsFiles/DB_project/41 Supplier View Order Form.ui', self)
+        self.setWindowTitle("Material Info")
+
+        self.closeButton.clicked.connect(self.view_close)
+
+        # self.matID = material_id
+        # self.matName = material_name
+        # self.suppID = supplier_id
+        # self.cost = cost
+        # self.inveLevl = inventory_level
+        
+
+        self.mat_id.setText(str(material_id.text()))
+        self.mat_name.setText(str(material_name.text()))
+        self.sup_id.setText(str(supplier_id.text()))
+        self.cost_line.setText(str(cost.text()))
+        self.inven_levl.setText(str(inventory_level.text()))
+
+    def view_close(self):
+        self.close()
+        
+
+
 
 
 def main():

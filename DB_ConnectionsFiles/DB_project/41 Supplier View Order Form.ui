@@ -25,31 +25,35 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QLineEdit" name="titleLineedit">
+      <widget class="QLineEdit" name="mat_id">
        <property name="text">
         <string>56</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit">
+      <widget class="QLineEdit" name="mat_name">
        <property name="text">
         <string>1001</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_3">
+      <widget class="QLineEdit" name="sup_id">
        <property name="text">
         <string>112244</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QDateEdit" name="dateEdit"/>
+      <widget class="QLineEdit" name="cost_line">
+       <property name="text">
+        <string>112244</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_2">
+      <widget class="QLineEdit" name="inven_levl">
        <property name="text">
         <string>500</string>
        </property>
@@ -91,20 +95,20 @@
      <item>
       <widget class="QLabel" name="label_7">
        <property name="text">
-        <string>Order Date:</string>
+        <string>Cost</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Quantity:</string>
+        <string>Inventory Level</string>
        </property>
       </widget>
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="viewButton_5">
+   <widget class="QPushButton" name="closeButton">
     <property name="geometry">
      <rect>
       <x>310</x>
@@ -124,7 +128,7 @@
      <x>0</x>
      <y>0</y>
      <width>490</width>
-     <height>26</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>

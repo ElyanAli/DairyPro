@@ -36,19 +36,9 @@
       <height>191</height>
      </rect>
     </property>
-    <row>
-     <property name="text">
-      <string>1</string>
-     </property>
-    </row>
     <column>
      <property name="text">
       <string>Material ID</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Supplier ID</string>
      </property>
     </column>
     <column>
@@ -58,59 +48,24 @@
     </column>
     <column>
      <property name="text">
-      <string>Order Date</string>
+      <string>Supplier ID</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>Quantity</string>
+      <string>Cost</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>Price</string>
+      <string>Inventory Level</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>Delivery Status</string>
+      <string>Quality Metric</string>
      </property>
     </column>
-    <item row="0" column="0">
-     <property name="text">
-      <string>0001</string>
-     </property>
-    </item>
-    <item row="0" column="1">
-     <property name="text">
-      <string>011245</string>
-     </property>
-    </item>
-    <item row="0" column="2">
-     <property name="text">
-      <string>2005</string>
-     </property>
-    </item>
-    <item row="0" column="3">
-     <property name="text">
-      <string>1/1/2000</string>
-     </property>
-    </item>
-    <item row="0" column="4">
-     <property name="text">
-      <string>2</string>
-     </property>
-    </item>
-    <item row="0" column="5">
-     <property name="text">
-      <string>1000</string>
-     </property>
-    </item>
-    <item row="0" column="6">
-     <property name="text">
-      <string>Delivered</string>
-     </property>
-    </item>
    </widget>
    <widget class="QGroupBox" name="searched">
     <property name="geometry">
@@ -124,7 +79,7 @@
     <property name="title">
      <string>Search</string>
     </property>
-    <widget class="QPushButton" name="searchButton">
+    <widget class="QPushButton" name="supp_order_search">
      <property name="geometry">
       <rect>
        <x>290</x>
@@ -181,21 +136,21 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QLineEdit" name="titleline">
+       <widget class="QLineEdit" name="supp_mat_id">
         <property name="text">
          <string>0001</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="titleline_2">
+       <widget class="QLineEdit" name="supp_id">
         <property name="text">
          <string>011245</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="titleline_3">
+       <widget class="QLineEdit" name="mat_name">
         <property name="text">
          <string>Potassium</string>
         </property>
@@ -250,7 +205,7 @@
      <x>0</x>
      <y>0</y>
      <width>525</width>
-     <height>26</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>

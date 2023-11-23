@@ -27,7 +27,7 @@
      <string>Info</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="d_orderView">
+   <widget class="QPushButton" name="sup_dash_rawMat">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Orders</string>
+     <string>Raw Materials Supplied</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -65,7 +65,7 @@
      <x>0</x>
      <y>0</y>
      <width>349</width>
-     <height>26</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>
