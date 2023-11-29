@@ -261,6 +261,26 @@ class SupplierRawMaterials(QtWidgets.QMainWindow):
         self.supp_order_search.clicked.connect(self.suppMaterialSearch)
         self.viewButton.clicked.connect(self.viewMaterial_clicked)
         self.closeButton.clicked.connect(self.view_close)
+        self.generateOrder.clicked.connect(self.generate_Order_Clicked)
+            # self.deleteButton.clicked.connect(self.deleteSelectedRow)
+
+    
+    
+    # def deleteSelectedRow(self):
+    #     connection = pyodbc.connect(connection_string)
+    #     cursor = connection.cursor()
+
+    #     selected_row = self.booksTableWidget.currentRow()
+        
+        
+    #     if selected_row >= 0:
+    #         id_to_delete = int(self.booksTableWidget.item(selected_row, 0).text())
+    #         cursor.execute("DELETE FROM Raw_Material WHERE material_id = ?;", id_to_delete)
+    #         self.booksTableWidget.removeRow(selected_row)
+    #     else:
+    #         print("Please select a row to delete.")
+
+
 
         
 
@@ -286,14 +306,21 @@ class SupplierRawMaterials(QtWidgets.QMainWindow):
 
     def viewMaterial_clicked(self):
         selected_row = self.booksTableWidget.currentRow()
-        material_id = self.booksTableWidget.item(selected_row, 0)
-        material_name = self.booksTableWidget.item(selected_row, 1)
-        supplier_id = self.booksTableWidget.item(selected_row, 2)
-        cost = self.booksTableWidget.item(selected_row, 3)
-        inventory_level = self.booksTableWidget.item(selected_row, 4)
+        # material_id = self.booksTableWidget.item(selected_row, 0)
+        # material_name = self.booksTableWidget.item(selected_row, 1)
+        # supplier_id = self.booksTableWidget.item(selected_row, 2)
+        # cost = self.booksTableWidget.item(selected_row, 3)
+        # inventory_level = self.booksTableWidget.item(selected_row, 4)
         # quality_metric = self.booksTableWidget.item(selected_row, 5)
-        self.viewMat = viewRawMaterial(material_id, material_name, supplier_id, cost,inventory_level)
-        self.viewMat.show()
+        if selected_row >= 0:
+            material_id = self.booksTableWidget.item(selected_row, 0)
+            material_name = self.booksTableWidget.item(selected_row, 1)
+            supplier_id = self.booksTableWidget.item(selected_row, 2)
+            cost = self.booksTableWidget.item(selected_row, 3)
+            inventory_level = self.booksTableWidget.item(selected_row, 4)
+
+            self.viewMat = viewRawMaterial(material_id, material_name, supplier_id, cost,inventory_level)
+            self.viewMat.show()
 
     def view_close(self):
         self.close()
@@ -316,6 +343,49 @@ class SupplierRawMaterials(QtWidgets.QMainWindow):
                     self.booksTableWidget.setRowHidden(row, False)
                 else:
                     self.booksTableWidget.setRowHidden(row, True)
+    def generate_Order_Clicked(self):
+
+        self.OrderGen = GenerateOrders()
+        self.OrderGen.show()
+        
+
+
+
+class GenerateOrders(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(GenerateOrders, self).__init__()
+            
+        uic.loadUi('DB_ConnectionsFiles/DB_project/42 Supplier Generate Order Form.ui', self)
+        self.setWindowTitle("Generate Order")
+
+        self.order_gen.clicked.connect(self.generate_order_clicked)
+
+    def generate_order_clicked(self):
+        material_id = self.Matt_id.text()
+        material_name = self.mat_name.text()
+        supplier_id = self.supp_id.text()
+        q = "select GETDATE()"
+
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+
+        # Clear existing rows in the table
+        # self.booksTableWidget.setRowCount(0)
+
+        #detch data from raw_mat table 
+        
+
+        cursor.execute(q)
+        order_date = cursor.fetchone()
+        print(order_date)
+        
+
+
+
+
+
+
+
 
 class viewRawMaterial(QtWidgets.QMainWindow):
     def __init__(self, material_id, material_name, supplier_id, cost, inventory_level):

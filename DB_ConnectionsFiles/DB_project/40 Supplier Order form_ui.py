@@ -12,17 +12,56 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(525, 666)
+        MainWindow.resize(525, 525)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.closeButton = QtWidgets.QPushButton(parent=self.centralwidget)
         self.closeButton.setGeometry(QtCore.QRect(360, 560, 121, 31))
+        self.closeButton.setStyleSheet("background-color: rgb(174, 209, 255);\n"
+"font: 10pt \"Comic Sans MS\";\n"
+"color: #00007f;\n"
+"border-style: outset;\n"
+"border-width: 3px;\n"
+"border-radius: 5px;\n"
+"border-color: #00007f;\n"
+"")
         self.closeButton.setObjectName("closeButton")
         self.booksTableWidget = QtWidgets.QTableWidget(parent=self.centralwidget)
         self.booksTableWidget.setGeometry(QtCore.QRect(40, 300, 441, 191))
+        self.booksTableWidget.setStyleSheet("QTableWidget {\n"
+"    background-color: rgb(169, 192, 255);\n"
+"   alternate-background-color: #e0e0e0;\n"
+"   selection-background-color: #4CAF50;\n"
+"    border:  rgb(0, 0, 127);; /* Border color around the table */\n"
+"    margin: 5px; /* Set the margin size */\n"
+"    font: 8pt \"Comic Sans MS\";\n"
+"    color: rgb(0, 0, 127);\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"    font: 8pt \"Comic Sans MS\";\n"
+"    color: rgb(0, 0, 127);\n"
+"    \n"
+"}\n"
+"\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color:  rgb(169, 192, 255); /* Header background color */\n"
+"    color: rgb(0, 0, 127); /* Header text color */\n"
+"    padding: 4px; /* Header padding */\n"
+"    font: 8pt \"Comic Sans MS\";\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected {\n"
+"    background-color: rgb(0, 0, 127) /* Background color for selected items */\n"
+"    color: white; /* Text color for selected items */\n"
+"}\n"
+"")
         self.booksTableWidget.setObjectName("booksTableWidget")
         self.booksTableWidget.setColumnCount(6)
-        self.booksTableWidget.setRowCount(0)
+        self.booksTableWidget.setRowCount(1)
+        item = QtWidgets.QTableWidgetItem()
+        self.booksTableWidget.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         self.booksTableWidget.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -35,51 +74,113 @@ class Ui_MainWindow(object):
         self.booksTableWidget.setHorizontalHeaderItem(4, item)
         item = QtWidgets.QTableWidgetItem()
         self.booksTableWidget.setHorizontalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.booksTableWidget.setItem(0, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.booksTableWidget.setItem(0, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.booksTableWidget.setItem(0, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.booksTableWidget.setItem(0, 3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.booksTableWidget.setItem(0, 4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.booksTableWidget.setItem(0, 5, item)
         self.searched = QtWidgets.QGroupBox(parent=self.centralwidget)
         self.searched.setGeometry(QtCore.QRect(40, 20, 441, 261))
+        self.searched.setStyleSheet("font: 10pt \"Comic Sans MS\";\n"
+"border-color: rgb(0, 0, 127);\n"
+"border-width: 10px;\n"
+"font-color: rgb(0, 0, 127);")
         self.searched.setObjectName("searched")
         self.supp_order_search = QtWidgets.QPushButton(parent=self.searched)
         self.supp_order_search.setGeometry(QtCore.QRect(290, 200, 121, 31))
+        self.supp_order_search.setStyleSheet("background-color: rgb(174, 209, 255);\n"
+"font: 10pt \"Comic Sans MS\";\n"
+"color: #00007f;\n"
+"border-style: outset;\n"
+"border-width: 3px;\n"
+"border-radius: 5px;\n"
+"border-color: #00007f;\n"
+"")
         self.supp_order_search.setObjectName("supp_order_search")
-        self.layoutWidget = QtWidgets.QWidget(parent=self.searched)
-        self.layoutWidget.setGeometry(QtCore.QRect(30, 40, 92, 131))
-        self.layoutWidget.setObjectName("layoutWidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.label = QtWidgets.QLabel(parent=self.layoutWidget)
+        self.label = QtWidgets.QLabel(parent=self.searched)
+        self.label.setGeometry(QtCore.QRect(20, 50, 90, 40))
+        self.label.setStyleSheet("font: 10pt \"Comic Sans MS\";\n"
+"font-color: rgb(0, 0, 127);")
         self.label.setObjectName("label")
-        self.verticalLayout.addWidget(self.label)
-        self.label_2 = QtWidgets.QLabel(parent=self.layoutWidget)
-        self.label_2.setObjectName("label_2")
-        self.verticalLayout.addWidget(self.label_2)
-        self.label_6 = QtWidgets.QLabel(parent=self.layoutWidget)
+        self.label_6 = QtWidgets.QLabel(parent=self.searched)
+        self.label_6.setGeometry(QtCore.QRect(20, 80, 90, 62))
+        self.label_6.setStyleSheet("font: 10pt \"Comic Sans MS\";\n"
+"font-color: rgb(0, 0, 127);")
         self.label_6.setObjectName("label_6")
-        self.verticalLayout.addWidget(self.label_6)
-        self.layoutWidget_2 = QtWidgets.QWidget(parent=self.searched)
-        self.layoutWidget_2.setGeometry(QtCore.QRect(130, 40, 281, 141))
-        self.layoutWidget_2.setObjectName("layoutWidget_2")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.layoutWidget_2)
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.supp_mat_id = QtWidgets.QLineEdit(parent=self.layoutWidget_2)
+        self.label_2 = QtWidgets.QLabel(parent=self.searched)
+        self.label_2.setGeometry(QtCore.QRect(20, 110, 90, 71))
+        self.label_2.setStyleSheet("font: 10pt \"Comic Sans MS\";\n"
+"font-color: rgb(0, 0, 127);")
+        self.label_2.setObjectName("label_2")
+        self.supp_mat_id = QtWidgets.QLineEdit(parent=self.searched)
+        self.supp_mat_id.setGeometry(QtCore.QRect(120, 60, 279, 18))
+        self.supp_mat_id.setStyleSheet("background-color: rgb(169, 192, 255);\n"
+"border-style: outset;\n"
+"border-width: 1px;\n"
+"border-radius: 5px;\n"
+"border-color: #00007f;")
         self.supp_mat_id.setObjectName("supp_mat_id")
-        self.verticalLayout_2.addWidget(self.supp_mat_id)
-        self.supp_id = QtWidgets.QLineEdit(parent=self.layoutWidget_2)
+        self.supp_id = QtWidgets.QLineEdit(parent=self.searched)
+        self.supp_id.setGeometry(QtCore.QRect(120, 100, 279, 18))
+        self.supp_id.setStyleSheet("background-color: rgb(169, 192, 255);\n"
+"border-style: outset;\n"
+"border-width: 1px;\n"
+"border-radius: 5px;\n"
+"border-color: #00007f;")
         self.supp_id.setObjectName("supp_id")
-        self.verticalLayout_2.addWidget(self.supp_id)
-        self.mat_name = QtWidgets.QLineEdit(parent=self.layoutWidget_2)
+        self.mat_name = QtWidgets.QLineEdit(parent=self.searched)
+        self.mat_name.setGeometry(QtCore.QRect(120, 140, 279, 18))
+        self.mat_name.setStyleSheet("background-color: rgb(169, 192, 255);\n"
+"border-style: outset;\n"
+"border-width: 1px;\n"
+"border-radius: 5px;\n"
+"border-color: #00007f;")
         self.mat_name.setObjectName("mat_name")
-        self.verticalLayout_2.addWidget(self.mat_name)
-        self.deleteButton = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.deleteButton.setGeometry(QtCore.QRect(230, 560, 121, 31))
-        self.deleteButton.setObjectName("deleteButton")
-        self.viewButton_2 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.viewButton_2.setGeometry(QtCore.QRect(360, 520, 121, 31))
-        self.viewButton_2.setObjectName("viewButton_2")
+        self.generateOrder = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.generateOrder.setGeometry(QtCore.QRect(360, 520, 121, 31))
+        self.generateOrder.setStyleSheet("background-color: rgb(174, 209, 255);\n"
+"font: 10pt \"Comic Sans MS\";\n"
+"color: #00007f;\n"
+"border-style: outset;\n"
+"border-width: 3px;\n"
+"border-radius: 5px;\n"
+"border-color: #00007f;\n"
+"")
+        self.generateOrder.setObjectName("generateOrder")
         self.viewButton = QtWidgets.QPushButton(parent=self.centralwidget)
         self.viewButton.setGeometry(QtCore.QRect(230, 520, 121, 31))
+        self.viewButton.setStyleSheet("background-color: rgb(174, 209, 255);\n"
+"font: 10pt \"Comic Sans MS\";\n"
+"color: #00007f;\n"
+"border-style: outset;\n"
+"border-width: 3px;\n"
+"border-radius: 5px;\n"
+"border-color: #00007f;\n"
+"")
         self.viewButton.setObjectName("viewButton")
+        self.label_4 = QtWidgets.QLabel(parent=self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(0, 0, 781, 651))
+        self.label_4.setAutoFillBackground(False)
+        self.label_4.setStyleSheet("\n"
+"\n"
+"background-color: rgb(207, 232, 255);\n"
+"")
+        self.label_4.setFrameShape(QtWidgets.QFrame.Shape.Panel)
+        self.label_4.setText("")
+        self.label_4.setObjectName("label_4")
+        self.label_4.raise_()
+        self.closeButton.raise_()
+        self.booksTableWidget.raise_()
+        self.searched.raise_()
+        self.generateOrder.raise_()
+        self.viewButton.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 525, 18))
@@ -96,6 +197,8 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.closeButton.setText(_translate("MainWindow", "Close"))
+        item = self.booksTableWidget.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "1"))
         item = self.booksTableWidget.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Material ID"))
         item = self.booksTableWidget.horizontalHeaderItem(1)
@@ -108,14 +211,28 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Inventory Level"))
         item = self.booksTableWidget.horizontalHeaderItem(5)
         item.setText(_translate("MainWindow", "Quality Metric"))
+        __sortingEnabled = self.booksTableWidget.isSortingEnabled()
+        self.booksTableWidget.setSortingEnabled(False)
+        item = self.booksTableWidget.item(0, 0)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.booksTableWidget.item(0, 1)
+        item.setText(_translate("MainWindow", "Milk Base"))
+        item = self.booksTableWidget.item(0, 2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.booksTableWidget.item(0, 3)
+        item.setText(_translate("MainWindow", "500.00"))
+        item = self.booksTableWidget.item(0, 4)
+        item.setText(_translate("MainWindow", "20"))
+        item = self.booksTableWidget.item(0, 5)
+        item.setText(_translate("MainWindow", "Good"))
+        self.booksTableWidget.setSortingEnabled(__sortingEnabled)
         self.searched.setTitle(_translate("MainWindow", "Search"))
         self.supp_order_search.setText(_translate("MainWindow", "Search"))
-        self.label.setText(_translate("MainWindow", "Material ID:"))
-        self.label_2.setText(_translate("MainWindow", "Supplier ID"))
-        self.label_6.setText(_translate("MainWindow", "Material Name:"))
+        self.label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#00007f;\">Material ID:</span></p></body></html>"))
+        self.label_6.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#00007f;\">Material Name:</span></p></body></html>"))
+        self.label_2.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#00007f;\">Supplier ID</span></p></body></html>"))
         self.supp_mat_id.setText(_translate("MainWindow", "0001"))
         self.supp_id.setText(_translate("MainWindow", "011245"))
         self.mat_name.setText(_translate("MainWindow", "Potassium"))
-        self.deleteButton.setText(_translate("MainWindow", "Delete"))
-        self.viewButton_2.setText(_translate("MainWindow", "Generate Order"))
+        self.generateOrder.setText(_translate("MainWindow", "Generate Order"))
         self.viewButton.setText(_translate("MainWindow", "View"))

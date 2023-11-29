@@ -17,16 +17,49 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.supp_info = QtWidgets.QPushButton(parent=self.centralwidget)
         self.supp_info.setGeometry(QtCore.QRect(180, 100, 111, 91))
+        self.supp_info.setStyleSheet("background-color: rgb(174, 209, 255);\n"
+"font: 10pt \"Comic Sans MS\";\n"
+"color: #00007f;\n"
+"border-style: outset;\n"
+"border-width: 3px;\n"
+"border-radius: 5px;\n"
+"border-color: #00007f;\n"
+"")
         self.supp_info.setObjectName("supp_info")
         self.sup_dash_rawMat = QtWidgets.QPushButton(parent=self.centralwidget)
         self.sup_dash_rawMat.setGeometry(QtCore.QRect(50, 100, 111, 91))
+        self.sup_dash_rawMat.setStyleSheet("background-color: rgb(174, 209, 255);\n"
+"font: 10pt \"Comic Sans MS\";\n"
+"color: #00007f;\n"
+"border-style: outset;\n"
+"border-width: 3px;\n"
+"border-radius: 5px;\n"
+"border-color: #00007f;\n"
+"")
         self.sup_dash_rawMat.setObjectName("sup_dash_rawMat")
-        self.label = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(120, 30, 101, 41))
+        self.label_4 = QtWidgets.QLabel(parent=self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(0, 0, 481, 371))
+        self.label_4.setAutoFillBackground(False)
+        self.label_4.setStyleSheet("\n"
+"\n"
+"background-color: rgb(207, 232, 255);\n"
+"")
+        self.label_4.setFrameShape(QtWidgets.QFrame.Shape.Panel)
+        self.label_4.setText("")
+        self.label_4.setObjectName("label_4")
+        self.label_12 = QtWidgets.QLabel(parent=self.centralwidget)
+        self.label_12.setGeometry(QtCore.QRect(70, 30, 201, 41))
         font = QtGui.QFont()
+        font.setFamily("Comic Sans MS")
         font.setPointSize(16)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
+        self.label_12.setFont(font)
+        self.label_12.setStyleSheet("")
+        self.label_12.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_12.setObjectName("label_12")
+        self.label_4.raise_()
+        self.supp_info.raise_()
+        self.sup_dash_rawMat.raise_()
+        self.label_12.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 349, 18))
@@ -44,4 +77,4 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.supp_info.setText(_translate("MainWindow", "My Info"))
         self.sup_dash_rawMat.setText(_translate("MainWindow", "Raw Materials"))
-        self.label.setText(_translate("MainWindow", "Supplier"))
+        self.label_12.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#00007f;\">Supplier</span></p></body></html>"))
