@@ -91,7 +91,7 @@ class Ui_MainWindow(object):
         self.searched.setStyleSheet("font: 10pt \"Comic Sans MS\";\n"
 "border-color: rgb(0, 0, 127);\n"
 "border-width: 10px;\n"
-"font-color: rgb(0, 0, 127);")
+"color: rgb(0, 0, 127);")
         self.searched.setObjectName("searched")
         self.supp_order_search = QtWidgets.QPushButton(parent=self.searched)
         self.supp_order_search.setGeometry(QtCore.QRect(290, 200, 121, 31))

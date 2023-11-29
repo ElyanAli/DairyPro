@@ -156,7 +156,7 @@ QTableWidget::item:selected {
      <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
 border-color: rgb(0, 0, 127);
 border-width: 10px;
-font-color: rgb(0, 0, 127);</string>
+color: rgb(0, 0, 127);</string>
     </property>
     <property name="title">
      <string>Search</string>

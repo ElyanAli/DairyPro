@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'c:\Users\hp\Documents\CS_Undergrad\Semester_3\DATABASE\bd_final_project\DairyPro\DB_ConnectionsFiles\DB_project\26 Customer Order Button.ui'
+# Form implementation generated from reading ui file 'c:\Users\hp\Documents\CS_Undergrad\Semester_3\DATABASE\bd_final_project\DairyPro\DB_ConnectionsFiles\customer_sameer\26 Customer Order Button.ui'
 #
 # Created by: PyQt6 UI code generator 6.5.2
 #
