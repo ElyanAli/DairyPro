@@ -14,24 +14,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>20</y>
-      <width>171</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>16</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Administration</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="productView">
     <property name="geometry">
      <rect>
@@ -40,6 +22,16 @@
       <width>111</width>
       <height>91</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(174, 209, 255);
+font: 10pt &quot;Comic Sans MS&quot;;
+color: #00007f;
+border-style: outset;
+border-width: 3px;
+border-radius: 5px;
+border-color: #00007f;
+</string>
     </property>
     <property name="text">
      <string>Products</string>
@@ -54,6 +46,16 @@
       <height>91</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(174, 209, 255);
+font: 10pt &quot;Comic Sans MS&quot;;
+color: #00007f;
+border-style: outset;
+border-width: 3px;
+border-radius: 5px;
+border-color: #00007f;
+</string>
+    </property>
     <property name="text">
      <string>Distributors</string>
     </property>
@@ -66,6 +68,16 @@
       <width>111</width>
       <height>91</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(174, 209, 255);
+font: 10pt &quot;Comic Sans MS&quot;;
+color: #00007f;
+border-style: outset;
+border-width: 3px;
+border-radius: 5px;
+border-color: #00007f;
+</string>
     </property>
     <property name="text">
      <string>Inventory</string>
@@ -80,11 +92,21 @@
       <height>91</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(174, 209, 255);
+font: 10pt &quot;Comic Sans MS&quot;;
+color: #00007f;
+border-style: outset;
+border-width: 3px;
+border-radius: 5px;
+border-color: #00007f;
+</string>
+    </property>
     <property name="text">
      <string>Orders</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="manufactureView">
+   <widget class="QPushButton" name="manufactureProduct">
     <property name="geometry">
      <rect>
       <x>330</x>
@@ -93,11 +115,21 @@
       <height>91</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(174, 209, 255);
+font: 10pt &quot;Comic Sans MS&quot;;
+color: #00007f;
+border-style: outset;
+border-width: 3px;
+border-radius: 5px;
+border-color: #00007f;
+</string>
+    </property>
     <property name="text">
      <string>Manufacturing</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="rawmatView">
+   <widget class="QPushButton" name="rawMaterialView">
     <property name="geometry">
      <rect>
       <x>330</x>
@@ -105,6 +137,16 @@
       <width>111</width>
       <height>91</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(174, 209, 255);
+font: 10pt &quot;Comic Sans MS&quot;;
+color: #00007f;
+border-style: outset;
+border-width: 3px;
+border-radius: 5px;
+border-color: #00007f;
+</string>
     </property>
     <property name="text">
      <string>Raw Materials</string>
@@ -119,6 +161,16 @@
       <height>91</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(174, 209, 255);
+font: 10pt &quot;Comic Sans MS&quot;;
+color: #00007f;
+border-style: outset;
+border-width: 3px;
+border-radius: 5px;
+border-color: #00007f;
+</string>
+    </property>
     <property name="text">
      <string>Supplier</string>
     </property>
@@ -131,6 +183,16 @@
       <width>111</width>
       <height>91</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(174, 209, 255);
+font: 10pt &quot;Comic Sans MS&quot;;
+color: #00007f;
+border-style: outset;
+border-width: 3px;
+border-radius: 5px;
+border-color: #00007f;
+</string>
     </property>
     <property name="text">
      <string>Customers</string>
@@ -145,10 +207,261 @@
       <height>91</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(174, 209, 255);
+font: 10pt &quot;Comic Sans MS&quot;;
+color: #00007f;
+border-style: outset;
+border-width: 3px;
+border-radius: 5px;
+border-color: #00007f;
+</string>
+    </property>
     <property name="text">
      <string>Exit Database</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>30</y>
+      <width>201</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;Administration&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>-10</y>
+      <width>561</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+
+background-color: rgb(207, 232, 255);
+</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>130</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>prod.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>130</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>pngwing.com.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>130</y>
+      <width>40</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>raw.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>240</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>order.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>240</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>dist.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>240</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>fact.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>350</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>supp.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>350</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>cust.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>360</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>ex.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>label_4</zorder>
+   <zorder>productView</zorder>
+   <zorder>distributorView</zorder>
+   <zorder>inventoryView</zorder>
+   <zorder>currentOrders</zorder>
+   <zorder>manufactureProduct</zorder>
+   <zorder>rawMaterialView</zorder>
+   <zorder>supplierView</zorder>
+   <zorder>customerView</zorder>
+   <zorder>exitDatabase</zorder>
+   <zorder>label_12</zorder>
+   <zorder>label</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label_3</zorder>
+   <zorder>label_5</zorder>
+   <zorder>label_6</zorder>
+   <zorder>label_7</zorder>
+   <zorder>label_8</zorder>
+   <zorder>label_9</zorder>
+   <zorder>label_10</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

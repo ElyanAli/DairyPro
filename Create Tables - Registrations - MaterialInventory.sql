@@ -95,3 +95,47 @@ DROP TABLE Employees;
 DROP TABLE Customers;
 DROP TABLE Registrations;
 */
+
+CREATE TABLE Suppliers (
+    supplier_id INT PRIMARY KEY NOT NULL,
+    supplier_name VARCHAR(255),
+    address NVARCHAR(MAX),
+    phone_number NVARCHAR(11),
+    email NVARCHAR(255),
+    activity_status VARCHAR(255)
+	FOREIGN KEY (supplier_id) REFERENCES Registrations(id)
+);
+
+CREATE TABLE Raw_Material (
+    material_id INT PRIMARY KEY IDENTITY(001,1) NOT NULL,
+    material_name VARCHAR(255),
+    supplier_id INT,
+    cost MONEY,
+    quality_metric VARCHAR(255),
+	FOREIGN KEY (supplier_id) REFERENCES Suppliers(supplier_id)
+);
+
+CREATE TABLE Products_RawMaterial (
+    product_id INT,
+    material_id INT,
+    PRIMARY KEY (product_id, material_id),
+    FOREIGN KEY (product_id) REFERENCES Products(product_id),
+    FOREIGN KEY (material_id) REFERENCES Raw_Material(material_id)
+);
+
+CREATE TABLE Material_Inventory (
+    material_id INT,
+    warehouse_id INT,
+    material_stock INT,
+	PRIMARY KEY (material_id, warehouse_id),
+    FOREIGN KEY (material_id) REFERENCES Raw_Material(material_id),
+    FOREIGN KEY (warehouse_id) REFERENCES Warehouse(warehouse_id)
+);
+
+CREATE TABLE Manufacturing (
+    batch_id INT PRIMARY KEY IDENTITY(00001,1) NOT NULL,
+    product_id INT,
+    production_date DATE,
+    expiry_date DATE,
+    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+);

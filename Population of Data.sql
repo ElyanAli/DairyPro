@@ -6,6 +6,10 @@ INSERT INTO Registrations (password, user_type) VALUES ('strongPass', 'Employee'
 INSERT INTO Registrations (password, user_type) VALUES ('test123', 'Customer');
 INSERT INTO Registrations (password, user_type) VALUES ('userpass', 'Customer');
 INSERT INTO Registrations (password, user_type) VALUES ('user999', 'Employee');
+
+INSERT INTO Registrations (password, user_type) VALUES ('test987', 'Supplier');
+INSERT INTO Registrations (password, user_type) VALUES ('user123', 'Supplier');
+INSERT INTO Registrations (password, user_type) VALUES ('sup123', 'Supplier');
 */
 select * from Registrations;
 
@@ -119,3 +123,81 @@ INSERT INTO Product_Inventory (product_id, warehouse_id, product_stock)
 VALUES (7, 1, 1500);
 */
 Select * from Product_inventory;
+
+/*
+INSERT INTO Suppliers (supplier_id, supplier_name, address, phone_number, email, activity_status)
+VALUES (9, 'Al Rehman Suppliers', N'123 Main Street', N'555-1234567', N'al.rehman.suppliers@email.com', 'Active');
+INSERT INTO Suppliers (supplier_id, supplier_name, address, phone_number, email, activity_status)
+VALUES (10, 'Quality Materials .Co', N'456 Oak Avenue', N'555-9876543', N'quality.materials.co@email.com', 'Inactive');
+INSERT INTO Suppliers (supplier_id, supplier_name, address, phone_number, email, activity_status)
+VALUES (11, 'Mr Suppliers', N'789 Maple Lane', N'555-5678901', N'mr.supplies@email.com', 'Active');
+*/
+select * from Suppliers;
+
+/*
+INSERT INTO Raw_Material (material_name, supplier_id, cost, quality_metric)
+VALUES ('Milk', 9, 5.00, 'High Quality');
+INSERT INTO Raw_Material (material_name, supplier_id, cost, quality_metric)
+VALUES ('Wheat', 10, 7.00, 'Medium Quality');
+INSERT INTO Raw_Material (material_name, supplier_id, cost, quality_metric)
+VALUES ('Egg', 11, 4.00, 'High Quality');
+INSERT INTO Raw_Material (material_name, supplier_id, cost, quality_metric)
+VALUES ('Sugar', 9, 10.00, 'High Quality');
+*/
+
+select * from Raw_material;
+Select * from Warehouse;
+
+/*
+INSERT INTO Products_RawMaterial (product_id, material_id)
+VALUES (1, 1), (1, 2), (1, 3);
+INSERT INTO Products_RawMaterial (product_id, material_id)
+VALUES (2, 2), (2, 4);
+INSERT INTO Products_RawMaterial (product_id, material_id)
+VALUES (3, 1), (3, 3), (3, 4);
+INSERT INTO Products_RawMaterial (product_id, material_id)
+VALUES (4, 1), (4, 2), (4, 3), (4, 4);
+INSERT INTO Products_RawMaterial (product_id, material_id)
+VALUES (5, 1), (5, 4);
+INSERT INTO Products_RawMaterial (product_id, material_id)
+VALUES (6, 1);
+INSERT INTO Products_RawMaterial (product_id, material_id)
+VALUES (7, 1), (7, 4);
+*/
+select * from Products_rawmaterial;
+
+/*
+INSERT INTO Material_Inventory (material_id, warehouse_id, material_stock)
+VALUES (1, 1, 5000);
+INSERT INTO Material_Inventory (material_id, warehouse_id, material_stock)
+VALUES (2, 2, 4000);
+INSERT INTO Material_Inventory (material_id, warehouse_id, material_stock)
+VALUES (3, 1, 5000);
+INSERT INTO Material_Inventory (material_id, warehouse_id, material_stock)
+VALUES (4, 2, 4500);
+*/
+
+select * from Material_inventory;
+
+/*
+INSERT INTO Manufacturing (product_id, production_date, expiry_date)
+VALUES (1, '2023-01-01', '2023-12-31'),
+       (1, '2023-02-01', '2023-12-31'),
+       (1, '2023-03-01', '2023-12-31');
+INSERT INTO Manufacturing (product_id, production_date, expiry_date)
+VALUES (2, '2023-01-15', '2024-01-15'),
+       (2, '2023-02-15', '2024-01-15');
+INSERT INTO Manufacturing (product_id, production_date, expiry_date)
+VALUES (3, '2023-03-10', '2024-03-10');
+INSERT INTO Manufacturing (product_id, production_date, expiry_date)
+VALUES (4, '2023-02-28', '2024-02-28');
+INSERT INTO Manufacturing (product_id, production_date, expiry_date)
+VALUES (5, '2023-01-10', '2024-01-10');
+INSERT INTO Manufacturing (product_id, production_date, expiry_date)
+VALUES (6, '2023-03-05', '2024-03-05');
+INSERT INTO Manufacturing (product_id, production_date, expiry_date)
+VALUES (7, '2023-01-20', '2023-12-20'),
+       (7, '2023-02-20', '2023-12-20');
+*/
+
+select * from Manufacturing;

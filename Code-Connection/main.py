@@ -74,7 +74,7 @@ class Login(QtWidgets.QMainWindow):
             elif user_type == 'Distributor':
                 self.open_distributorDashboard()
             elif user_type == 'Supplier':
-                self.open_supplierDashboard()
+                self.open_supplierDashboard(id)
             elif user_type == 'Customer':
                 self.open_customerDashboard(id)
         else:
@@ -93,14 +93,17 @@ class Login(QtWidgets.QMainWindow):
     def open_customerDashboard(self, current_id):
         self.startCustomerView = CustomerDashboard(current_id)
         self.startCustomerView.show()
-        
+
+    def open_supplierDashboard(self, current_id):
+        # TODO Supplier HERE
+        self.startSupplierView = SupplierDashboard(current_id)
+        self.startSupplierView.show()
+
     def open_distributorDashboard(self):
         #TODO Distributor HERE
         pass
 
-    def open_supplierDashboard(self):
-        #TODO Supplier HERE
-        pass
+    
     
 
 # CREATE ACCOUNT
@@ -481,14 +484,232 @@ class CustomerPlaceOrder (QtWidgets.QMainWindow):
         except ValueError:
             QtWidgets.QMessageBox.critical(self, "Error", f"Quantity must be a numeric value.")
         
+class SupplierDashboard (QtWidgets.QMainWindow):
+    def __init__(self, current_id):
+        self.current_id = current_id
+        # Call the inherited classes __init__ method
+        super(SupplierDashboard, self).__init__()
 
+        # Load the .ui file
+        uic.loadUi('Screens/39 supplier dashboard.ui', self)
 
+        self.send_order.clicked.connect(lambda: self.open_generateOrder(self.current_id))
+        self.supp_info.clicked.connect(lambda: self.open_supplierInfo(self.current_id))
 
+    def open_generateOrder(self, current_id):
+        self.startRawMaterialMaster = SupplierRawMaterials(current_id)
+        self.startRawMaterialMaster.show()
 
+    def open_supplierInfo(self, current_id):
+        self.startsupplierInfoView = SupplierInformation(current_id)
+        self.startsupplierInfoView.show()
 
+class SupplierGenerateOrder (QtWidgets.QMainWindow):
+    def __init__(self, current_id):
+        self.current_id = current_id
+        # Call the inherited classes __init__ method
+        super(SupplierGenerateOrder, self).__init__()
 
+        # Load the .ui file
+        uic.loadUi('Screens/42 Supplier Generate Order Form.ui', self)
 
+        self.supplier_id.setText(current_id)
+        self.supplier_id.setEnabled(False)
 
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+
+        fetchMaterials = "SELECT material_name from Raw_Material"
+        cursor.execute(fetchMaterials)
+
+        for row_data in cursor.fetchall():
+            for cell_data in row_data:
+                self.material_name.addItem(str(cell_data))
+        
+        getDate = "SELECT CONVERT(DATE, GETDATE(), 103) AS CurrentDate"
+        cursor.execute(getDate)
+        today = cursor.fetchone()[0]
+
+        self.order_date.setDate(today)
+        self.order_date.setEnabled(False)
+
+        self.generate_order.clicked.connect(lambda: self.tranactionSupplierGenerateOrder(self.material_name.currentText(), int(self.quantity.text())))
+
+        connection.close()
+
+    def tranactionSupplierGenerateOrder(self, material_name, quantity):
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+        
+        fetchMaterialId = "SELECT material_id from Raw_Material where material_name = ?"
+        cursor.execute(fetchMaterialId, material_name)
+        material_id = cursor.fetchone()[0]
+        print(material_id)
+
+        updateRawMaterialInventory = "UPDATE Material_Inventory SET material_stock = material_stock + ? where material_id = ?"
+        cursor.execute(updateRawMaterialInventory, quantity, material_id)
+        cursor.commit()
+
+        connection.close()
+
+class SupplierInformation(QtWidgets.QMainWindow):
+    def __init__(self, current_id):
+        self.current_id = current_id
+        super(SupplierInformation, self).__init__()
+        uic.loadUi('Screens/43 Supplier info form.ui', self)
+        self.setWindowTitle("Supplier Information")
+
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+
+        #detch data from raw_mat table 
+        query = "select * from Suppliers where supplier_id = ?"
+        cursor.execute(query, current_id)
+
+        row = cursor.fetchone() 
+        self.closeButton.clicked.connect(self.view_close)
+        print(row)
+        suppID = row[0]
+        suppName = row[1]
+        suppAdd = row[2]
+        suppPhone = row[3]
+        suppEmail = row[4]
+        suppActStatus = row[5]
+
+        self.supp_id.setText(str(suppID))
+        self.supp_name.setText(str(suppName))
+        self.supp_addr.setText(str(suppAdd))
+        self.supp_phone.setText(str(suppPhone))
+        self.supp_email.setText(str(suppEmail))
+        self.supp_act_status.setText(str(suppActStatus))
+
+        # Disable QLineEdit widgets
+        self.supp_id.setEnabled(False)
+        self.supp_name.setEnabled(False)
+        self.supp_addr.setEnabled(False)
+        self.supp_phone.setEnabled(False)
+        self.supp_email.setEnabled(False)
+        self.supp_act_status.setEnabled(False)
+
+    def view_close(self):
+        self.close()
+
+class SupplierRawMaterials(QtWidgets.QMainWindow):
+    def __init__(self, current_id):
+        self.current_id = current_id
+        super(SupplierRawMaterials, self).__init__()
+        
+        uic.loadUi('Screens/40 Supplier Order form.ui', self)
+        self.setWindowTitle("Materials Supplied")
+        
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+
+        fillSupplierOrders = "select R.material_name, R.cost, MI.material_stock from Raw_Material R INNER JOIN Material_Inventory MI ON R.material_id = MI.material_id where R.supplier_id = ?"
+        cursor.execute(fillSupplierOrders, current_id)
+        
+        for row_index, row_data in enumerate(cursor.fetchall()):
+            self.booksTableWidget.insertRow(row_index)
+            for col_index, cell_data in enumerate(row_data):
+                item = QTableWidgetItem(str(cell_data))
+                self.booksTableWidget.setItem(row_index, col_index, item)
+
+        #TODO: Change Material Name Liine edit to ComboBOX
+        connection.close()
+
+        self.supp_order_search.clicked.connect(self.suppMaterialSearch)
+        self.viewButton.clicked.connect(lambda: self.viewMaterial_clicked(current_id))
+        self.closeButton.clicked.connect(self.view_close)
+        self.generateOrder.clicked.connect(lambda: self.generate_Order_Clicked(current_id))
+    
+
+    def populate_supp_rawMat(self):
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+
+        # Clear existing rows in the table
+        self.booksTableWidget.setRowCount(0)
+
+        #detch data from raw_mat table 
+        cursor.execute("select * from Raw_Material")
+
+        # Fetch all rows and populate the table
+        for row_index, row_data in enumerate(cursor.fetchall()):
+            self.booksTableWidget.insertRow(row_index)
+            for col_index, cell_data in enumerate(row_data):
+                item = QTableWidgetItem(str(cell_data))
+                self.booksTableWidget.setItem(row_index, col_index, item)
+
+        #close database connection
+        connection.close()
+
+    def viewMaterial_clicked(self, current_id):
+        selected_row = self.booksTableWidget.currentRow()
+        # material_id = self.booksTableWidget.item(selected_row, 0)
+        # material_name = self.booksTableWidget.item(selected_row, 1)
+        # supplier_id = self.booksTableWidget.item(selected_row, 2)
+        # cost = self.booksTableWidget.item(selected_row, 3)
+        # inventory_level = self.booksTableWidget.item(selected_row, 4)
+        # quality_metric = self.booksTableWidget.item(selected_row, 5)
+        if selected_row >= 0:
+            # material_id = self.booksTableWidget.item(selected_row, 0)
+            material_name = self.booksTableWidget.item(selected_row, 0)
+            # supplier_id = self.booksTableWidget.item(selected_row, 2)
+            cost = self.booksTableWidget.item(selected_row, 1)
+            inventory_level = self.booksTableWidget.item(selected_row, 2)
+            #############
+            self.viewMat = viewRawMaterial(material_name, current_id, cost,inventory_level)
+            self.viewMat.show()
+
+    def view_close(self):
+        self.close()
+
+    #TODO: RESOLVE SEARCH
+    def suppMaterialSearch(self):
+        material_id = self.supp_mat_id.text()
+        supp_id = self.supp_id.text()
+        material_name = self.mat_name.text()
+
+        for row in range(self.booksTableWidget.rowCount()):
+            m_id = self.booksTableWidget.item(row, 0).text() if self.booksTableWidget.item(row, 0) is not None else ""
+            s_id = self.booksTableWidget.item(row, 2).text() if self.booksTableWidget.item(row, 1) is not None else ""
+            m_name = self.booksTableWidget.item(row, 1).text() if self.booksTableWidget.item(row, 2) is not None else ""
+            
+            if not material_id and not supp_id and not material_name:
+                self.booksTableWidget.setRowHidden(row, False)
+            else:
+                # Show the row if at least one criterion matches
+                if m_id == material_id or s_id == supp_id or m_name == material_name:
+                    self.booksTableWidget.setRowHidden(row, False)
+                else:
+                    self.booksTableWidget.setRowHidden(row, True)
+    def generate_Order_Clicked(self, current_id):
+
+        self.startSupplierOrderGen = SupplierGenerateOrder(current_id)
+        self.startSupplierOrderGen.show()
+        
+class viewRawMaterial(QtWidgets.QMainWindow):
+    def __init__(self, material_name, supplier_id, cost, inventory_level):
+        super(viewRawMaterial, self).__init__()
+        
+        uic.loadUi('Screens/41 Supplier View Order Form.ui', self)
+        self.setWindowTitle("Material Info")
+
+        self.closeButton.clicked.connect(self.view_close)
+
+        self.mat_name.setText(str(material_name.text()))
+        self.sup_id.setText(str(supplier_id))
+        self.cost_line.setText(str(cost.text()))
+        self.inven_levl.setText(str(inventory_level.text()))
+
+        # Disable QLineEdit widgets
+        self.mat_name.setEnabled(False)
+        self.sup_id.setEnabled(False)
+        self.cost_line.setEnabled(False)
+        self.inven_levl.setEnabled(False)
+
+    def view_close(self):
+        self.close()
 
 def main():
     app = QApplication(sys.argv)
