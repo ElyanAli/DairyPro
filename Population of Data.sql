@@ -6,7 +6,7 @@ INSERT INTO Registrations (password, user_type) VALUES ('strongPass', 'Employee'
 INSERT INTO Registrations (password, user_type) VALUES ('test123', 'Customer');
 INSERT INTO Registrations (password, user_type) VALUES ('userpass', 'Customer');
 INSERT INTO Registrations (password, user_type) VALUES ('user999', 'Employee');
-
+INSERT INTO Registrations (password, user_type) VALUES ('user1', 'Customer');
 INSERT INTO Registrations (password, user_type) VALUES ('test987', 'Supplier');
 INSERT INTO Registrations (password, user_type) VALUES ('user123', 'Supplier');
 INSERT INTO Registrations (password, user_type) VALUES ('sup123', 'Supplier');
