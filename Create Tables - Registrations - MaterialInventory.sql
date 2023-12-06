@@ -118,10 +118,13 @@ CREATE TABLE Raw_Material (
 CREATE TABLE Products_RawMaterial (
     product_id INT,
     material_id INT,
+	material_used INT,
     PRIMARY KEY (product_id, material_id),
     FOREIGN KEY (product_id) REFERENCES Products(product_id),
     FOREIGN KEY (material_id) REFERENCES Raw_Material(material_id)
 );
+
+--DROP TABLE Products_RawMaterial;
 
 CREATE TABLE Material_Inventory (
     material_id INT,
@@ -139,3 +142,6 @@ CREATE TABLE Manufacturing (
     expiry_date DATE,
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
 );
+
+ALTER TABLE orders
+ADD order_feedback NVARCHAR(MAX);

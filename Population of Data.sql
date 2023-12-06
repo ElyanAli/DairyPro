@@ -149,20 +149,20 @@ select * from Raw_material;
 Select * from Warehouse;
 
 /*
-INSERT INTO Products_RawMaterial (product_id, material_id)
-VALUES (1, 1), (1, 2), (1, 3);
-INSERT INTO Products_RawMaterial (product_id, material_id)
-VALUES (2, 2), (2, 4);
-INSERT INTO Products_RawMaterial (product_id, material_id)
-VALUES (3, 1), (3, 3), (3, 4);
-INSERT INTO Products_RawMaterial (product_id, material_id)
-VALUES (4, 1), (4, 2), (4, 3), (4, 4);
-INSERT INTO Products_RawMaterial (product_id, material_id)
-VALUES (5, 1), (5, 4);
-INSERT INTO Products_RawMaterial (product_id, material_id)
-VALUES (6, 1);
-INSERT INTO Products_RawMaterial (product_id, material_id)
-VALUES (7, 1), (7, 4);
+INSERT INTO Products_RawMaterial (product_id, material_id, material_used)
+VALUES (1, 1, 5), (1, 2, 8), (1, 3, 10);
+INSERT INTO Products_RawMaterial (product_id, material_id, material_used)
+VALUES (2, 2, 7), (2, 4, 12);
+INSERT INTO Products_RawMaterial (product_id, material_id, material_used)
+VALUES (3, 1, 3), (3, 3, 6), (3, 4, 9);
+INSERT INTO Products_RawMaterial (product_id, material_id, material_used)
+VALUES (4, 1, 4), (4, 2, 8), (4, 3, 11), (4, 4, 15);
+INSERT INTO Products_RawMaterial (product_id, material_id, material_used)
+VALUES (5, 1, 2), (5, 4, 10);
+INSERT INTO Products_RawMaterial (product_id, material_id, material_used)
+VALUES (6, 1, 5);
+INSERT INTO Products_RawMaterial (product_id, material_id, material_used)
+VALUES (7, 1, 3), (7, 4, 7);
 */
 select * from Products_rawmaterial;
 

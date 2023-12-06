@@ -6,43 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>525</width>
-    <height>525</height>
+    <width>748</width>
+    <height>622</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="closeButton">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>560</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(174, 209, 255);
-font: 10pt &quot;Comic Sans MS&quot;;
-color: #00007f;
-border-style: outset;
-border-width: 3px;
-border-radius: 5px;
-border-color: #00007f;
-</string>
-    </property>
-    <property name="text">
-     <string>Close</string>
-    </property>
-   </widget>
    <widget class="QTableWidget" name="booksTableWidget">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>300</y>
-      <width>441</width>
+      <x>30</x>
+      <y>290</y>
+      <width>381</width>
       <height>191</height>
      </rect>
     </property>
@@ -79,27 +56,32 @@ QTableWidget::item:selected {
     </property>
     <column>
      <property name="text">
-      <string>Material Name</string>
+      <string>ID</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>Cost</string>
+      <string>Name</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>Inventory Level</string>
+      <string>Category</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Price</string>
      </property>
     </column>
    </widget>
    <widget class="QGroupBox" name="searched">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>20</y>
-      <width>441</width>
-      <height>261</height>
+      <x>30</x>
+      <y>80</y>
+      <width>521</width>
+      <height>191</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -111,11 +93,11 @@ color: rgb(0, 0, 127);</string>
     <property name="title">
      <string>Search</string>
     </property>
-    <widget class="QPushButton" name="supp_order_search">
+    <widget class="QPushButton" name="searchButton">
      <property name="geometry">
       <rect>
-       <x>290</x>
-       <y>200</y>
+       <x>170</x>
+       <y>110</y>
        <width>121</width>
        <height>31</height>
       </rect>
@@ -134,64 +116,86 @@ border-color: #00007f;
       <string>Search</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>30</x>
+       <y>30</y>
+       <width>87</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="styleSheet">
+         <string notr="true">font: 8pt &quot;Comic Sans MS&quot;;
+color:rgb(0, 0, 127)
+</string>
+        </property>
+        <property name="text">
+         <string>Product Name:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">font: 8pt &quot;Comic Sans MS&quot;;
+color:rgb(0, 0, 127)
+</string>
+        </property>
+        <property name="text">
+         <string>Price:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>30</y>
+       <width>161</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QComboBox" name="categoryCombo">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(169, 192, 255);
+border-style: outset;
+border-width: 1px;
+border-radius: 5px;
+border-color: #00007f;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="price">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(169, 192, 255);
+border-style: outset;
+border-width: 1px;
+border-radius: 5px;
+border-color: #00007f;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QComboBox" name="catcombo">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
        <y>50</y>
-       <width>90</width>
-       <height>40</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
-font-color: rgb(0, 0, 127);</string>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;Material ID:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_6">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>80</y>
-       <width>90</width>
-       <height>62</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
-font-color: rgb(0, 0, 127);</string>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;Material Name:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>110</y>
-       <width>90</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
-font-color: rgb(0, 0, 127);</string>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;Supplier ID&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="supp_mat_id">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>60</y>
-       <width>279</width>
-       <height>18</height>
+       <width>141</width>
+       <height>22</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -201,56 +205,31 @@ border-width: 1px;
 border-radius: 5px;
 border-color: #00007f;</string>
      </property>
-     <property name="text">
-      <string>0001</string>
-     </property>
     </widget>
-    <widget class="QLineEdit" name="supp_id">
+    <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>120</x>
-       <y>100</y>
-       <width>279</width>
-       <height>18</height>
+       <x>350</x>
+       <y>20</y>
+       <width>85</width>
+       <height>28</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(169, 192, 255);
-border-style: outset;
-border-width: 1px;
-border-radius: 5px;
-border-color: #00007f;</string>
+      <string notr="true">font: 8pt &quot;Comic Sans MS&quot;;
+color:rgb(0, 0, 127)
+</string>
      </property>
      <property name="text">
-      <string>011245</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="mat_name">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>140</y>
-       <width>279</width>
-       <height>18</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(169, 192, 255);
-border-style: outset;
-border-width: 1px;
-border-radius: 5px;
-border-color: #00007f;</string>
-     </property>
-     <property name="text">
-      <string>Potassium</string>
+      <string>Category</string>
      </property>
     </widget>
    </widget>
-   <widget class="QPushButton" name="generateOrder">
+   <widget class="QPushButton" name="closeButton">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>520</y>
+      <x>420</x>
+      <y>440</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -266,14 +245,14 @@ border-color: #00007f;
 </string>
     </property>
     <property name="text">
-     <string>Generate Order</string>
+     <string>Close</string>
     </property>
    </widget>
    <widget class="QPushButton" name="viewButton">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>520</y>
+      <x>420</x>
+      <y>400</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -295,10 +274,10 @@ border-color: #00007f;
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>781</width>
-      <height>651</height>
+      <x>-20</x>
+      <y>-10</y>
+      <width>811</width>
+      <height>671</height>
      </rect>
     </property>
     <property name="autoFillBackground">
@@ -317,20 +296,45 @@ background-color: rgb(207, 232, 255);
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>20</y>
+      <width>201</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;Search Product&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
    <zorder>label_4</zorder>
-   <zorder>closeButton</zorder>
    <zorder>booksTableWidget</zorder>
    <zorder>searched</zorder>
-   <zorder>generateOrder</zorder>
+   <zorder>closeButton</zorder>
    <zorder>viewButton</zorder>
+   <zorder>label_12</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>525</width>
-     <height>26</height>
+     <width>748</width>
+     <height>18</height>
     </rect>
    </property>
   </widget>

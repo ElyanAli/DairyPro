@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>518</width>
-    <height>448</height>
+    <width>510</width>
+    <height>495</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -251,8 +251,8 @@ border-color: #00007f;
      <rect>
       <x>0</x>
       <y>-10</y>
-      <width>561</width>
-      <height>441</height>
+      <width>601</width>
+      <height>541</height>
      </rect>
     </property>
     <property name="autoFillBackground">
@@ -468,7 +468,7 @@ background-color: rgb(207, 232, 255);
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>518</width>
+     <width>510</width>
      <height>26</height>
     </rect>
    </property>

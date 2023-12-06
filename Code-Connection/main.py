@@ -172,30 +172,35 @@ class AdminDashboard (QtWidgets.QMainWindow):
 
         # self.productView.clicked.connect(self.open_productView)
         # self.inventoryView.clicked.connect(self.open_inventoryView)
-        # self.rawmatView.clicked.connect(self.open_rawmatView)
+        self.rawMaterialView.clicked.connect(self.open_rawmatView)
         # self.orderView.clicked.connect(self.open_orderView)
         # self.distributorView.clicked.connect(self.open_distributorView)
-        # self.manufactureView.clicked.connect(self.open_manufactureView)
-        # self.supplierView.clicked.connect(self.open_supplierView)
+        self.manufactureProduct.clicked.connect(self.open_manufactureView)
+        self.supplierView.clicked.connect(self.open_supplierView)
         # self.exitDatabase.clicked.connect(self.open_exitDatabase)
         # print(self.current_id)
         # self.customerView.clicked.connect(lambda: self.open_customerView(current_id))
         self.currentOrders.clicked.connect(lambda: self.open_currentOrders(current_id))
-    
+        #TODO: Add a functionality such that Admin can view the customers Feedback!!
     # def open_productView(self):
     #     self.startProductView = AdminProductView()
     #     self.startProductView.show()
     #     pass
     # def open_inventoryView(self):
     #     pass
-    # def open_rawmatView(self):
-    #     pass
+    def open_rawmatView(self):
+        self.adminraw = AdminRawMaterial()
+        self.adminraw.show()
     # def open_distributorView(self):
     #     pass
-    # def open_manufactureView(self):
-    #     pass
-    # def open_supplierView(self):
-    #     pass
+    def open_manufactureView(self):
+        self.startManufacturingView = ManufacturingViewProducts()
+        self.startManufacturingView.show()
+
+    def open_supplierView(self):
+        # print("h")
+        self.adminSupp = AdminSupplierView()
+        self.adminSupp.show()
     # def open_customerView(self):
     #     pass
     # def open_exitDatabase(self):
@@ -204,6 +209,407 @@ class AdminDashboard (QtWidgets.QMainWindow):
     def open_currentOrders(self, current_id):
         self.startCurrentOrders = CurrentOrders(current_id)
         self.startCurrentOrders.show()
+
+class AdminRawMaterial (QtWidgets.QMainWindow):
+    def __init__(self):
+        # Call the inherited classes __init__ method
+        super(AdminRawMaterial, self).__init__()
+
+        
+        uic.loadUi('Screens/11 Admin Raw Material Button.ui', self)
+        self.searchButton.clicked.connect(self.searchClicked   )
+
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+        #populate table
+        materials = "select * from Raw_Material"
+        cursor.execute(materials)
+        self.closeButton.clicked.connect(self.closeButton_clicked)
+        self.viewButton.clicked.connect(self.view_material)
+
+        for row_index, row_data in enumerate(cursor.fetchall()):
+            self.booksTableWidget.insertRow(row_index)
+            for col_index, cell_data in enumerate(row_data):
+                item = QTableWidgetItem(str(cell_data))
+                self.booksTableWidget.setItem(row_index, col_index, item)
+    
+    def closeButton_clicked(self):
+        self.close()
+
+    def view_material(self):
+            selected_row = self.booksTableWidget.currentRow()
+            if selected_row >= 0:
+                material_id = self.booksTableWidget.item(selected_row, 0).text()
+                material_name = self.booksTableWidget.item(selected_row, 1).text()
+                supp_name = self.booksTableWidget.item(selected_row, 2).text()
+                cost = self.booksTableWidget.item(selected_row, 3).text()
+                
+                self.view_prod_details = viewRawMatDetails(material_id, material_name, supp_name, cost)
+                self.view_prod_details.show()
+
+    def searchClicked(self):
+        # prod_name = self.categoryCombo.currentText()
+        # price = self.price.text()
+        # cat_name = self.catcombo.currentText()
+        #for activity status
+        matId = self.mat_id.text()
+        matName = self.mat_name.text()
+        suppId = self.supp_id.text()
+        cost = self.cost.text()
+
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+        prods = "select * from Raw_Material"
+        cursor.execute(prods)
+        for row_index in range(self.booksTableWidget.rowCount()):
+            row_hidden = True  # Assume the row will be shown, unless a mismatch is found
+
+            # Match material ID
+            if matId and self.booksTableWidget.item(row_index, 0).text() == matId:
+                row_hidden = False
+
+            # Match material name
+            if matName and self.booksTableWidget.item(row_index, 1).text() == matName:
+                row_hidden = False
+
+            # Match supplier ID
+            if suppId and self.booksTableWidget.item(row_index, 2).text() == suppId:
+                row_hidden = False
+
+            # Match cost
+            if cost and self.booksTableWidget.item(row_index, 3).text() == cost:
+                row_hidden = False
+
+            # Set the row visibility
+            self.booksTableWidget.setRowHidden(row_index, row_hidden)
+
+
+class viewRawMatDetails (QtWidgets.QMainWindow):
+    def __init__(self, material_id, material_name, supp_name, cost):
+        # Call the inherited classes __init__ method
+        super(viewRawMatDetails, self).__init__()
+        # Load the .ui file
+        uic.loadUi('Screens/12 View Raw Material.ui', self)  
+        self.closeButton.clicked.connect(self.closeButton_clicked)          
+        self.matId.setText(material_id)
+        self.mat_name.setText(material_name)
+        self.suppId.setText(supp_name)
+        self.cost.setText(cost)
+
+        self.matId.setDisabled(True)
+        self.mat_name.setDisabled(True)
+        self.suppId.setDisabled(True)
+        self.cost.setDisabled(True)
+        
+
+    def closeButton_clicked(self):
+        self.close()   
+
+
+class ManufacturingViewProducts (QtWidgets.QMainWindow):
+    def __init__(self):
+        # Call the inherited classes __init__ method
+        super(ManufacturingViewProducts, self).__init__()
+
+        # Load the .ui file
+        uic.loadUi('Screens/low_stock prod view.ui', self)
+
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+
+        fetchProductLowInInventory = "select p.product_id, p.product_name, c.category_name, P.Price, P_I.Product_stock from Products P INNER JOIN Category C ON P.category_id = C.category_id INNER JOIN Product_Inventory P_I ON P.product_id = P_I.product_id where P_I.product_stock < 1500"
+        cursor.execute(fetchProductLowInInventory)
+         
+        for row_index, row_data in enumerate(cursor.fetchall()):
+            self.low_inventory_products.insertRow(row_index)
+            for col_index, cell_data in enumerate(row_data):
+                if col_index == 3:
+                    cell_data = round(float(cell_data), 2)
+                item = QTableWidgetItem(str(cell_data))
+                self.low_inventory_products.setItem(row_index, col_index, item)
+        
+        connection.close()
+
+        self.manufacture_product.clicked.connect(self.open_manufactureProduct)
+
+    def open_manufactureProduct(self):
+        selected_items = self.low_inventory_products.selectedItems()
+
+        if len(selected_items) > 0:
+            selected_item = selected_items[0]
+            selected_row = selected_item.row()
+
+            # Get all items in the selected row
+            row_items = []
+            for col in range(self.low_inventory_products.columnCount()):
+                item = self.low_inventory_products.item(selected_row, col)
+                if item is not None:
+                    row_items.append(item.text())
+
+            # print(f"Selected Row {selected_row} Items: {row_items}")
+            product_id = row_items[0]
+            product_name = row_items[1]
+            category_name = row_items[2]
+            price = row_items[3]
+            stock_left = row_items[4]
+
+            print(product_id, product_name, category_name, price, stock_left)
+
+            self.startManufactureProduct = ManufactureProduct(product_id, product_name)
+            self.startManufactureProduct.show()
+
+            connection = pyodbc.connect(connection_string)
+            cursor = connection.cursor()
+
+            # selectEmployeeId = "select employee_id from Employees where employee_name = ?"
+            # cursor.execute(selectEmployeeId, employee_name)
+            # employee_id = cursor.fetchone()[0]
+            # # print(employee_id)
+            
+            # getDate = "SELECT CONVERT(DATE, GETDATE(), 103) AS CurrentDate"
+            # cursor.execute(getDate)
+            # today = cursor.fetchone()[0]
+            # updateOrder = "UPDATE Orders SET Employee_id = ?, delivery_status = ?, shipped_date = ? where Order_id = ?"
+            # cursor.execute(updateOrder, employee_id, 'Delivered', today, order_id)
+            # cursor.commit()
+
+            # fetchOrderProducts = "Select * from Order_Details where order_id = ?"
+            # cursor.execute(fetchOrderProducts, order_id)
+            # temp = cursor.fetchall()
+            # for i in temp:
+            #     product_id = i[1]
+            #     quantity = i[2]
+            #     updateProductInventory = "update Product_Inventory SET product_stock = product_stock - ? where product_id = ?;"
+            #     cursor.execute(updateProductInventory, int(quantity), int(product_id))
+            #     cursor.commit()
+
+            connection.close()
+        else:
+            QtWidgets.QMessageBox.warning(self, "Error", f"No Product Selected")
+
+        #############################3
+        #Retrive INFO
+        
+
+
+class ManufactureProduct (QtWidgets.QMainWindow):
+    def __init__(self, product_id, product_name):
+        # Call the inherited classes __init__ method
+        super(ManufactureProduct, self).__init__()
+
+        # Load the .ui file
+        uic.loadUi('Screens/raw_mat manufacture.ui', self)
+
+        self.product_name.setText(product_name)
+        self.product_id.setText(product_id)
+        self.product_name.setEnabled(False)
+        self.product_id.setEnabled(False)
+
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+        ############################################
+
+        fetchProductMaterials = "select R.material_name, PR.material_used from Raw_Material R INNER JOIN Products_RawMaterial PR ON R.material_id = PR.material_id INNER JOIN Products P ON P.product_id = PR.product_id where p.product_id = ?"
+        cursor.execute(fetchProductMaterials, int(product_id))
+
+        for row_index, row_data in enumerate(cursor.fetchall()):
+            self.rawMaterial_table.insertRow(row_index)
+            for col_index, cell_data in enumerate(row_data):
+                if col_index == 3:
+                    cell_data = round(float(cell_data), 2)
+                item = QTableWidgetItem(str(cell_data))
+                self.rawMaterial_table.setItem(row_index, col_index, item)
+
+        self.initiate_manufacturing.clicked.connect(self.transactManufacturing)
+        connection.close()
+
+    def transactManufacturing(self):
+        product_id = int(self.product_id.text())
+        product_name = self.product_name.text()
+        print(product_id, product_name)
+
+        quantity_of_product_to_manufacture = self.quantity.text()
+        if quantity_of_product_to_manufacture != "":
+            quantity_of_product_to_manufacture = int(quantity_of_product_to_manufacture)
+            table_data = []
+            for row in range(self.rawMaterial_table.rowCount()):
+                material_name_item = self.rawMaterial_table.item(row, 0)
+                quantity_item = self.rawMaterial_table.item(row, 1)
+                
+                # Check if items exist to avoid NoneType errors
+                if material_name_item is not None and quantity_item is not None:
+                    material_name = material_name_item.text()
+                    quantity = quantity_item.text()
+                    table_data.append([material_name, int(quantity)])
+
+            print(table_data)
+            
+            for i in table_data:
+                i[1] = i[1] * quantity_of_product_to_manufacture
+            print(table_data)
+
+            connection = pyodbc.connect(connection_string)
+            cursor = connection.cursor()   
+            fetchMaterialID = "SELECT material_id from Raw_Material where material_name = ?"
+            updateMaterialStock = "UPDATE Material_Inventory SET material_stock = material_stock - ? where material_id = ?"
+            for i in table_data:
+                cursor.execute(fetchMaterialID, i[0])
+                material_id = int(cursor.fetchone()[0])
+                print(material_id)
+
+                cursor.execute(updateMaterialStock, i[1], material_id)
+                cursor.commit()
+            
+            updateProductStock = "update Product_Inventory SET product_stock = product_stock + ? where product_id = ?"
+            cursor.execute(updateProductStock, quantity_of_product_to_manufacture, product_id)
+            cursor.commit()
+            
+            QtWidgets.QMessageBox.information(self, "Success", f"{quantity_of_product_to_manufacture} Units of {product_name} were Manufactured")
+
+
+
+        else:
+            QtWidgets.QMessageBox.warning(self, "Error", f"Please specify the Quantity of {product_name} to Manufacture")
+
+        pass
+
+class AdminSupplierView (QtWidgets.QMainWindow):
+    def __init__(self):
+        # Call the inherited classes __init__ method
+        super(AdminSupplierView, self).__init__()
+
+        # Load the .ui file
+        uic.loadUi('Screens/21 Supplier Button.ui', self)
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+
+        fillSupplierComboBox = "SELECT supplier_name from Suppliers"
+        cursor.execute(fillSupplierComboBox)
+
+        for row_data in cursor.fetchall():
+            for cell_data in row_data:
+                self.supplier_name.addItem(str(cell_data))
+
+        all_supp = "select * from Suppliers"
+        cursor.execute(all_supp)
+
+        for row_index, row_data in enumerate(cursor.fetchall()):
+            self.booksTableWidget.insertRow(row_index)
+            for col_index, cell_data in enumerate(row_data):
+                item = QTableWidgetItem(str(cell_data))
+                self.booksTableWidget.setItem(row_index, col_index, item)
+
+        self.searchButton.clicked.connect(self.adminSearchsupp)
+        self.supp_view.clicked.connect(self.adminSuppview)
+        self.closeButton.clicked.connect(self.closeButtonClicked)
+        self.changeActivityStatus.clicked.connect(self.changeActivityStatusfunc)
+
+        connection.close()
+
+    def changeActivityStatusfunc(self):
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+
+        # selected_items = self.pendingOrderTable.selectedItems()
+
+        selected_items = self.booksTableWidget.selectedItems()
+
+        if len(selected_items) > 0:
+            selected_item = selected_items[0]
+            selected_row = selected_item.row()
+
+            # Get all items in the selected row
+            row_items = []
+            for col in range(self.booksTableWidget.columnCount()):
+                item = self.booksTableWidget.item(selected_row, col)
+                if item is not None:
+                    row_items.append(item.text())
+
+            # print(f"Selected Row {selected_row} Items: {row_items}")
+            supp_id = row_items[0]
+            print(supp_id)
+            # supp_name = self.booksTableWidget.item(selected_row, 1).text()
+            # supp_addr = self.booksTableWidget.item(selected_row, 2).text()
+            # supp_cont = self.booksTableWidget.item(selected_row, 3).text()
+            # supp_email = self.booksTableWidget.item(selected_row, 4).text()
+            # supp_status = self.booksTableWidget.item(selected_row, 5).text()
+
+            selectActStatus = "SELECT activity_status from Suppliers where supplier_id = ?"
+            cursor.execute(selectActStatus, supp_id)
+
+            activity_status = cursor.fetchone()[0]
+            # print(activity_status)
+
+            if activity_status == "Inactive":
+                activity_status2 = "Active"
+            elif activity_status == "Active":
+                activity_status2 = "Inactive"
+
+            updateSQL = "UPDATE Suppliers SET activity_status = ? where supplier_id = ?"
+            cursor.execute(updateSQL, activity_status2, supp_id)
+            cursor.commit()
+
+            QtWidgets.QMessageBox.information(self, "Success", f"Activity Status of Supplier ID: {supp_id} is changed from {activity_status} to {activity_status2}")
+
+        connection.close()
+
+    def closeButtonClicked(self):
+        self.close()
+
+    def adminSuppview(self):
+        selected_row = self.booksTableWidget.currentRow()
+        # print(selected_row)
+        if selected_row > 0:
+            supp_name = self.booksTableWidget.item(selected_row, 1).text()
+            supp_id = self.booksTableWidget.item(selected_row, 0).text()
+            supp_addr = self.booksTableWidget.item(selected_row, 2).text()
+            supp_cont = self.booksTableWidget.item(selected_row, 3).text()
+            supp_email = self.booksTableWidget.item(selected_row, 4).text()
+            supp_status = self.booksTableWidget.item(selected_row, 5).text()
+
+            self.suppView = AdminSuppInfo(supp_name,supp_id, supp_addr, supp_email, supp_cont, supp_status)
+            self.suppView.show()
+            
+
+    def adminSearchsupp(self):
+
+        sup_name = self.supplier_name.currentText() 
+        sup_id = self.supplier_id.text()
+
+        # Iterate through rows and compare values
+        for row in range(self.booksTableWidget.rowCount()):
+            current_sup_name = self.booksTableWidget.item(row, 1).text()
+            current_sup_id = self.booksTableWidget.item(row, 0).text()
+
+            if (not sup_name or current_sup_name == sup_name) and (not sup_id or current_sup_id == sup_id):
+                # Show the row if it matches the search criteria
+                self.booksTableWidget.setRowHidden(row, False)
+            else:
+                # Hide the row if it does not match the search criteria
+                self.booksTableWidget.setRowHidden(row, True)
+
+
+class AdminSuppInfo (QtWidgets.QMainWindow):
+    def __init__(self, supp_name,supp_id, supp_addr, supp_email, supp_cont, supp_status):
+        # Call the inherited classes __init__ method
+        super(AdminSuppInfo, self).__init__()
+
+        # Load the .ui file
+        uic.loadUi('Screens/22 View Supplier.ui', self)
+        self.closeButton.clicked.connect(self.closeButtonClicked)
+
+
+        self.supp_name.setText(str(supp_name))
+        self.supp_id.setText(str(supp_id))
+        self.supp_address.setText(str(supp_addr))
+        self.supp_contact.setText(str(supp_cont))
+        self.email.setText(str(supp_email))
+        self.status.setText(str(supp_status))
+
+
+    def closeButtonClicked(self):
+        self.close()
+
 
 class CurrentOrders (QtWidgets.QMainWindow):
     def __init__(self, current_id):
@@ -293,7 +699,7 @@ class CurrentOrders (QtWidgets.QMainWindow):
 
             connection.close()
         else:
-            print("No item selected.")
+            QtWidgets.QMessageBox.warning(self, "Error", f"No Order selected from the Table")
 
 class CustomerDashboard (QtWidgets.QMainWindow):
     def __init__(self, current_id):
@@ -307,13 +713,235 @@ class CustomerDashboard (QtWidgets.QMainWindow):
         # connection = pyodbc.connect(connection_string)
         # cursor = connection.cursor()
 
+        self.customerInfo.clicked.connect(lambda: self.open_customerInfo(current_id))
         self.orders.clicked.connect(lambda: self.open_customerOrders(current_id))
+        self.productView.clicked.connect(self.customerProd)
+        self.feedback.clicked.connect(lambda: self.open_customerFeedback(current_id))
+
+    def open_customerFeedback(self, current_id):
+        self.startCustomerFeedback = CustomerFeedback(current_id)
+        self.startCustomerFeedback.show()
     
     def open_customerOrders(self, current_id):
         #To be Editied TODO
         # self.startCustomerOrders = CustomerOrdersView()
         self.startCustomerOrders = CustomerPlaceOrder(current_id)
         self.startCustomerOrders.show()
+    
+    def open_customerInfo(self, current_id):
+        self.c_info = CustomerInformation(current_id)
+        self.c_info.show()
+    def customerProd(self):
+        self.c_prod = CustomerProductView()
+        self.c_prod.show()
+
+class CustomerFeedback (QtWidgets.QMainWindow):
+    def __init__(self, current_id):
+        # self.current_id = current_id
+        # Call the inherited classes __init__ method
+        super(CustomerFeedback, self).__init__()
+
+        # Load the .ui file
+        uic.loadUi('Screens/46 feedbacks.ui', self)
+
+        ###################################################
+        self.customer_id.setText(current_id)
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+
+        fetchOrdersWithoutFeedback = "SELECT order_id from Orders where order_feedback is null and customer_id = ? and delivery_status = 'Delivered'"
+        cursor.execute(fetchOrdersWithoutFeedback, current_id)
+
+        for row_data in cursor.fetchall():
+            for cell_data in row_data:
+                self.order_id.addItem(str(cell_data))
+
+        connection.close()
+
+        self.submit.clicked.connect(lambda: self.submitButton(current_id))
+        self.closeButton.clicked.connect(self.closeFeedback)
+
+    def submitButton(self, current_id):
+        order_id = int(self.order_id.currentText())
+        print(order_id)
+        feedback = self.feedback.toPlainText()
+        print(feedback)
+        if feedback != "":
+            connection = pyodbc.connect(connection_string)
+            cursor = connection.cursor()
+
+            UpdateFeedbackInOrders = "UPDATE Orders SET order_feedback = ? where order_id = ?"
+            cursor.execute(UpdateFeedbackInOrders, feedback, order_id)
+            cursor.commit()
+
+            connection.close()
+            QtWidgets.QMessageBox.information(self, "Success", f"Thank you for your feedback!")
+        else:
+            QtWidgets.QMessageBox.warning(self, "Error", f"You can not submit an empty feedback!")
+
+    def closeFeedback(self):
+        self.close()
+
+class CustomerProductView (QtWidgets.QMainWindow):
+    def __init__(self):
+        # self.current_id = current_id
+        # Call the inherited classes __init__ method
+        super(CustomerProductView, self).__init__()
+
+        # Load the .ui file
+        uic.loadUi('Screens/29 Customer Product Button.ui', self)
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+
+        prods = "select P.product_id, P.product_name, C.category_name, P.price from products P inner Join Category C on P.category_id = C.category_id"
+        cursor.execute(prods)
+
+        for row_index, row_data in enumerate(cursor.fetchall()):
+            self.booksTableWidget.insertRow(row_index)
+            for col_index, cell_data in enumerate(row_data):
+                item = QTableWidgetItem(str(cell_data))
+                self.booksTableWidget.setItem(row_index, col_index, item)
+
+        prod_name = "select product_name from products"
+        cursor.execute(prod_name)
+        # names =  list(cursor.fetchall())
+        names = [row.product_name for row in cursor.fetchall()]
+        # print(names)
+        self.categoryCombo.addItems(names)
+
+        cat_name = "select category_name from Category"
+        cursor.execute(cat_name)
+        # names =  list(cursor.fetchall())
+        names = [row.category_name for row in cursor.fetchall()]
+        # print(names)
+        self.catcombo.addItems(names)
+
+        self.searchButton.clicked.connect(self.searchClicked)
+        self.viewButton.clicked.connect(self.viewMaterial_clicked)
+        self.closeButton.clicked.connect(self.closeButton_clicked)
+
+    def viewMaterial_clicked(self, current_id):
+        selected_row = self.booksTableWidget.currentRow()
+        if selected_row >= 0:
+            material_id = self.booksTableWidget.item(selected_row, 0).text()
+            material_name = self.booksTableWidget.item(selected_row, 1).text()
+            categorys_name = self.booksTableWidget.item(selected_row, 2).text()
+            cost = self.booksTableWidget.item(selected_row, 3).text()
+            
+            self.view_prod_details = viewProductDetails(material_id, material_name, categorys_name, cost)
+            self.view_prod_details.show()
+    def closeButton_clicked(self):
+        self.close()
+    def searchClicked(self):
+        prod_name = self.categoryCombo.currentText()
+        price = self.price.text()
+        cat_name = self.catcombo.currentText()
+        #for activity status
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+        prods = "select product_name from products"
+        cursor.execute(prods)
+        for row_index in range(self.booksTableWidget.rowCount()):
+                row_hidden = True  # Assume the row will be hidden, unless a match is found
+
+                if prod_name and self.booksTableWidget.item(row_index, 1).text() == prod_name:
+                    row_hidden = False
+
+                if price and self.booksTableWidget.item(row_index, 3).text() == price:
+                    row_hidden = False
+
+                if cat_name and self.booksTableWidget.item(row_index, 2).text() == cat_name:
+                    row_hidden = False
+
+                self.booksTableWidget.setRowHidden(row_index, row_hidden)
+
+                
+class viewProductDetails (QtWidgets.QMainWindow):
+    def __init__(self, product_id, prod_name, categorys_name, cost):
+        # self.current_id = current_id
+        # Call the inherited classes __init__ method
+        super(viewProductDetails, self).__init__()
+
+        # Load the .ui file
+        uic.loadUi('Screens/30 Customer View Products.ui', self)
+        self.name.setText(prod_name)
+        self.category.setText(categorys_name)
+        self.price.setText(cost)
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+        self.closeButton.clicked.connect(self.closeButton_clicked)
+
+
+        fetchCustomerName = "SELECT continuity_status from products where product_id = ?"
+        cursor.execute(fetchCustomerName, product_id)
+        row = cursor.fetchone()
+        status = str(row.continuity_status)
+        # print(status)
+        if status:
+            self.cont_stat.setChecked(True) 
+        else:
+            self.cont_stat.setChecked(False) 
+        # price = float(cursor.fetchone())
+        # print(price)
+        # price = float(row.price)
+        # print(price)
+        # cost = price
+        fetchCustomerName = "select M.material_name from Raw_Material M inner join Products_RawMaterial PR on M.material_id = PR.material_id where PR.product_id = ?;"
+        cursor.execute(fetchCustomerName, product_id)
+        # row = cursor.fetchall()
+        # print(row)
+        rows = cursor.fetchall()
+        self.populate_table(rows)
+
+    def populate_table(self, rows):
+        # Assuming you have a QTableWidget named self.tableWidget
+        self.booksTableWidget.setColumnCount(1)  # Set the number of columns
+        self.booksTableWidget.setRowCount(len(rows))  # Set the number of rows
+
+        for row_index, row_data in enumerate(rows):
+            item = QTableWidgetItem(str(row_data.material_name))
+            self.booksTableWidget.setItem(row_index, 0, item)
+
+        
+    def closeButton_clicked(self):
+        self.close()
+
+
+
+
+
+class CustomerInformation (QtWidgets.QMainWindow):
+    def __init__(self, current_id):
+        self.current_id = current_id
+        # Call the inherited classes __init__ method
+        super(CustomerInformation, self).__init__()
+
+        # Load the .ui file
+        uic.loadUi('Screens/31 Customer info form.ui', self)
+
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+
+        fetchCustomerName = "SELECT * from Customers where customer_id = ?"
+        cursor.execute(fetchCustomerName, current_id)
+        name = cursor.fetchone()#[0]
+        # print(name)
+        self.id.setText(str(name[0]))
+        self.name.setText(str(name[1]))
+        self.address.setText(str(name[2]))
+        self.contact.setText(str(name[3]))
+        self.email.setText(str(name[4]))
+
+        self.id.setEnabled(False)
+        self.name.setEnabled(False)
+        self.address.setEnabled(False)
+        self.contact.setEnabled(False)
+        self.email.setEnabled(False)
+
+        self.closeButton.clicked.connect(self.closeButtonClicked)
+
+    def closeButtonClicked(self):
+        self.close()
 
 class CustomerPlaceOrder (QtWidgets.QMainWindow):
     def __init__(self, current_id):
@@ -636,6 +1264,7 @@ class SupplierRawMaterials(QtWidgets.QMainWindow):
         # Fetch all rows and populate the table
         for row_index, row_data in enumerate(cursor.fetchall()):
             self.booksTableWidget.insertRow(row_index)
+            print(row_data)
             for col_index, cell_data in enumerate(row_data):
                 item = QTableWidgetItem(str(cell_data))
                 self.booksTableWidget.setItem(row_index, col_index, item)
@@ -666,23 +1295,38 @@ class SupplierRawMaterials(QtWidgets.QMainWindow):
 
     #TODO: RESOLVE SEARCH
     def suppMaterialSearch(self):
-        material_id = self.supp_mat_id.text()
-        supp_id = self.supp_id.text()
+        # material_id = self.mat_name.text()
+        # supp_id = self.supp_id.text()
         material_name = self.mat_name.text()
 
+        # for row in range(self.booksTableWidget.rowCount()):
+        #     # m_id = self.booksTableWidget.item(row, 0).text() if self.booksTableWidget.item(row, 0) is not None else ""
+        #     # s_id = self.booksTableWidget.item(row, 2).text() if self.booksTableWidget.item(row, 1) is not None else ""
+        #     # m_name = self.booksTableWidget.item(row, 0).text() if self.booksTableWidget.item(row, 0) is not None else ""
+        #     try:
+        #         m_name = self.booksTableWidget.item(row, 0).text()
+        #     except AttributeError:
+        #         m_name = ""
+        #     # if not (material_name==m_name):
+        #     #     self.booksTableWidget.setRowHidden(row, False)
+        #     # else:
+        #         # Show the row if at least one criterion matches
+        #     if m_name == material_name:
+        #         self.booksTableWidget.setRowHidden(row, False)
+        #     else:
+        #         self.booksTableWidget.setRowHidden(row, True)
         for row in range(self.booksTableWidget.rowCount()):
-            m_id = self.booksTableWidget.item(row, 0).text() if self.booksTableWidget.item(row, 0) is not None else ""
-            s_id = self.booksTableWidget.item(row, 2).text() if self.booksTableWidget.item(row, 1) is not None else ""
-            m_name = self.booksTableWidget.item(row, 1).text() if self.booksTableWidget.item(row, 2) is not None else ""
-            
-            if not material_id and not supp_id and not material_name:
+            try:
+                m_name = self.booksTableWidget.item(row, 0).text()
+            except AttributeError:
+                m_name = ""
+
+            if not material_name or m_name == material_name:
+                # Show the row if no search criteria or if the material name matches
                 self.booksTableWidget.setRowHidden(row, False)
             else:
-                # Show the row if at least one criterion matches
-                if m_id == material_id or s_id == supp_id or m_name == material_name:
-                    self.booksTableWidget.setRowHidden(row, False)
-                else:
-                    self.booksTableWidget.setRowHidden(row, True)
+                # Hide the row if material name does not match the search criteria
+                self.booksTableWidget.setRowHidden(row, True)
     def generate_Order_Clicked(self, current_id):
 
         self.startSupplierOrderGen = SupplierGenerateOrder(current_id)

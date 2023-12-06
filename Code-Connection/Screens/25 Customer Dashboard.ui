@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>515</width>
-    <height>317</height>
+    <width>682</width>
+    <height>320</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,7 +60,7 @@ border-color: #00007f;
      <string>Orders</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="distributorView">
+   <widget class="QPushButton" name="customerInfo">
     <property name="geometry">
      <rect>
       <x>350</x>
@@ -190,21 +190,45 @@ background-color: rgb(207, 232, 255);
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="feedback">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>120</y>
+      <width>111</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(174, 209, 255);
+font: 10pt &quot;Comic Sans MS&quot;;
+color: #00007f;
+border-style: outset;
+border-width: 3px;
+border-radius: 5px;
+border-color: #00007f;
+</string>
+    </property>
+    <property name="text">
+     <string>Feedback</string>
+    </property>
+   </widget>
    <zorder>label_4</zorder>
    <zorder>productView</zorder>
    <zorder>orders</zorder>
-   <zorder>distributorView</zorder>
+   <zorder>customerInfo</zorder>
    <zorder>label_12</zorder>
    <zorder>label_5</zorder>
    <zorder>label</zorder>
    <zorder>label_9</zorder>
+   <zorder>feedback</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>515</width>
+     <width>682</width>
      <height>26</height>
     </rect>
    </property>
