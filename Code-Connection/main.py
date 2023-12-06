@@ -7,11 +7,11 @@ import sys
 import pyodbc
 
 # Replace these with your own database connection details
-server = 'DESKTOP-G72O2BA'
+server = ''
 database = 'DairyPro2'  # Name of your Northwind database
 use_windows_authentication = False  # Set to True to use Windows Authentication
-username = 'sa'  # Specify a username if not using Windows Authentication
-password = 'ElyanAli2003'  # Specify a password if not using Windows Authentication
+username = ''  # Specify a username if not using Windows Authentication
+password = ''  # Specify a password if not using Windows Authentication
 
 # Create the connection string based on the authentication method chosen
 if use_windows_authentication:
