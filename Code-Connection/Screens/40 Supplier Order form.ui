@@ -6,25 +6,44 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>525</width>
-    <height>525</height>
+    <width>721</width>
+    <height>590</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="closeButton">
+   <widget class="QGroupBox" name="searched">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>560</y>
-      <width>121</width>
-      <height>31</height>
+      <x>10</x>
+      <y>30</y>
+      <width>671</width>
+      <height>221</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(174, 209, 255);
+     <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
+border-color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 127);
+border-width: 10px;
+color: rgb(0, 0, 127);</string>
+    </property>
+    <property name="title">
+     <string>Search</string>
+    </property>
+    <widget class="QPushButton" name="supp_order_search">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>120</y>
+       <width>151</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(174, 209, 255);
 font: 10pt &quot;Comic Sans MS&quot;;
 color: #00007f;
 border-style: outset;
@@ -32,22 +51,59 @@ border-width: 3px;
 border-radius: 5px;
 border-color: #00007f;
 </string>
-    </property>
-    <property name="text">
-     <string>Close</string>
-    </property>
-   </widget>
-   <widget class="QTableWidget" name="booksTableWidget">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>300</y>
-      <width>441</width>
-      <height>191</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QTableWidget {
+     </property>
+     <property name="text">
+      <string>Search</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>10</y>
+       <width>211</width>
+       <height>62</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
+font-color: rgb(0, 0, 127);</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;Material Name:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="mat_name">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>60</y>
+       <width>141</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(169, 192, 255);
+border-style: outset;
+border-width: 1px;
+border-radius: 5px;
+border-color: #00007f;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="booksTableWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>261</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QTableWidget {
     background-color: rgb(169, 192, 255);
    alternate-background-color: #e0e0e0;
    selection-background-color: #4CAF50;
@@ -76,47 +132,29 @@ QTableWidget::item:selected {
     color: white; /* Text color for selected items */
 }
 </string>
-    </property>
-    <column>
-     <property name="text">
-      <string>Material Name</string>
      </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Cost</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Inventory Level</string>
-     </property>
-    </column>
-   </widget>
-   <widget class="QGroupBox" name="searched">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>20</y>
-      <width>441</width>
-      <height>261</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
-border-color: rgb(0, 0, 127);
-border-width: 10px;
-color: rgb(0, 0, 127);</string>
-    </property>
-    <property name="title">
-     <string>Search</string>
-    </property>
-    <widget class="QPushButton" name="supp_order_search">
+     <column>
+      <property name="text">
+       <string>Material Name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Cost</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Inventory Level</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QPushButton" name="viewButton">
      <property name="geometry">
       <rect>
-       <x>290</x>
-       <y>200</y>
-       <width>121</width>
+       <x>300</x>
+       <y>170</y>
+       <width>151</width>
        <height>31</height>
       </rect>
      </property>
@@ -131,132 +169,20 @@ border-color: #00007f;
 </string>
      </property>
      <property name="text">
-      <string>Search</string>
+      <string>View</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label">
+    <widget class="QPushButton" name="generateOrder">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>50</y>
-       <width>90</width>
-       <height>40</height>
+       <x>470</x>
+       <y>120</y>
+       <width>161</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
-font-color: rgb(0, 0, 127);</string>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;Material ID:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_6">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>80</y>
-       <width>90</width>
-       <height>62</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
-font-color: rgb(0, 0, 127);</string>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;Material Name:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>110</y>
-       <width>90</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
-font-color: rgb(0, 0, 127);</string>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;Supplier ID&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="supp_mat_id">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>60</y>
-       <width>279</width>
-       <height>18</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(169, 192, 255);
-border-style: outset;
-border-width: 1px;
-border-radius: 5px;
-border-color: #00007f;</string>
-     </property>
-     <property name="text">
-      <string>0001</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="supp_id">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>100</y>
-       <width>279</width>
-       <height>18</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(169, 192, 255);
-border-style: outset;
-border-width: 1px;
-border-radius: 5px;
-border-color: #00007f;</string>
-     </property>
-     <property name="text">
-      <string>011245</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="mat_name">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>140</y>
-       <width>279</width>
-       <height>18</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(169, 192, 255);
-border-style: outset;
-border-width: 1px;
-border-radius: 5px;
-border-color: #00007f;</string>
-     </property>
-     <property name="text">
-      <string>Potassium</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QPushButton" name="generateOrder">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>520</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(174, 209, 255);
+      <string notr="true">background-color: rgb(174, 209, 255);
 font: 10pt &quot;Comic Sans MS&quot;;
 color: #00007f;
 border-style: outset;
@@ -264,22 +190,22 @@ border-width: 3px;
 border-radius: 5px;
 border-color: #00007f;
 </string>
-    </property>
-    <property name="text">
-     <string>Generate Order</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="viewButton">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>520</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(174, 209, 255);
+     </property>
+     <property name="text">
+      <string>Generate Order</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="closeButton">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>170</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(174, 209, 255);
 font: 10pt &quot;Comic Sans MS&quot;;
 color: #00007f;
 border-style: outset;
@@ -287,16 +213,17 @@ border-width: 3px;
 border-radius: 5px;
 border-color: #00007f;
 </string>
-    </property>
-    <property name="text">
-     <string>View</string>
-    </property>
+     </property>
+     <property name="text">
+      <string>Close</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>-70</y>
       <width>781</width>
       <height>651</height>
      </rect>
@@ -318,18 +245,14 @@ background-color: rgb(207, 232, 255);
     </property>
    </widget>
    <zorder>label_4</zorder>
-   <zorder>closeButton</zorder>
-   <zorder>booksTableWidget</zorder>
    <zorder>searched</zorder>
-   <zorder>generateOrder</zorder>
-   <zorder>viewButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>525</width>
+     <width>721</width>
      <height>26</height>
     </rect>
    </property>

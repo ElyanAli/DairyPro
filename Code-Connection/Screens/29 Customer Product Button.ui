@@ -121,7 +121,7 @@ border-color: #00007f;
       <rect>
        <x>30</x>
        <y>30</y>
-       <width>87</width>
+       <width>131</width>
        <height>61</height>
       </rect>
      </property>
@@ -155,10 +155,10 @@ color:rgb(0, 0, 127)
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>130</x>
+       <x>170</x>
        <y>30</y>
-       <width>161</width>
-       <height>61</height>
+       <width>171</width>
+       <height>65</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -334,7 +334,7 @@ background-color: rgb(207, 232, 255);
      <x>0</x>
      <y>0</y>
      <width>748</width>
-     <height>18</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

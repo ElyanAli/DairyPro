@@ -17,9 +17,9 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>190</x>
       <y>40</y>
-      <width>281</width>
+      <width>241</width>
       <height>261</height>
      </rect>
     </property>
@@ -103,9 +103,9 @@ border-color: #00007f;
    <widget class="QPushButton" name="generate_order">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>160</x>
       <y>320</y>
-      <width>121</width>
+      <width>141</width>
       <height>31</height>
      </rect>
     </property>
@@ -176,9 +176,9 @@ background-color: rgb(207, 232, 255);
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>50</x>
       <y>230</y>
-      <width>90</width>
+      <width>191</width>
       <height>45</height>
      </rect>
     </property>
@@ -193,9 +193,9 @@ font-color: rgb(0, 0, 127);</string>
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>50</x>
       <y>170</y>
-      <width>90</width>
+      <width>181</width>
       <height>57</height>
      </rect>
     </property>
@@ -212,7 +212,7 @@ font-color: rgb(0, 0, 127);</string>
      <rect>
       <x>50</x>
       <y>100</y>
-      <width>90</width>
+      <width>171</width>
       <height>81</height>
      </rect>
     </property>
@@ -229,7 +229,7 @@ font-color: rgb(0, 0, 127);</string>
      <rect>
       <x>50</x>
       <y>50</y>
-      <width>90</width>
+      <width>141</width>
       <height>51</height>
      </rect>
     </property>

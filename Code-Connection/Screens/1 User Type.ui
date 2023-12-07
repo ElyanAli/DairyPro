@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>476</width>
-    <height>360</height>
+    <width>655</width>
+    <height>372</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>60</y>
+      <x>200</x>
+      <y>40</y>
       <width>201</width>
       <height>41</height>
      </rect>
@@ -39,31 +39,6 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>-50</y>
-      <width>611</width>
-      <height>401</height>
-     </rect>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">
-
-background-color: rgb(207, 232, 255);
-</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Panel</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
@@ -80,10 +55,10 @@ background-color: rgb(207, 232, 255);
    <widget class="QPushButton" name="loginAdmin">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>110</y>
+      <x>170</x>
+      <y>170</y>
       <width>121</width>
-      <height>21</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -107,10 +82,10 @@ border-color: #00007f;
    <widget class="QPushButton" name="loginCustomer">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>110</y>
+      <x>170</x>
+      <y>130</y>
       <width>121</width>
-      <height>21</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -134,10 +109,10 @@ border-color: #00007f;
    <widget class="QPushButton" name="loginSupplier">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>140</y>
+      <x>310</x>
+      <y>130</y>
       <width>121</width>
-      <height>21</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -161,10 +136,10 @@ border-color: #00007f;
    <widget class="QPushButton" name="createAccount">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>310</x>
       <y>170</y>
       <width>121</width>
-      <height>20</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -185,40 +160,76 @@ border-color: #00007f;
      <string>Create Account</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="loginDistributor">
+   <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>140</y>
-      <width>121</width>
-      <height>21</height>
+      <x>260</x>
+      <y>10</y>
+      <width>61</width>
+      <height>61</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Comic Sans MS</family>
-     </font>
+    <property name="text">
+     <string/>
     </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(174, 209, 255);
-color: #00007f;
-border-style: outset;
-border-width: 3px;
-border-radius: 5px;
-border-color: #00007f;
-</string>
+    <property name="pixmap">
+     <pixmap>../../../../bd_final_project/DairyPro/DB_ConnectionsFiles/DB_project/—Pngtree—food elements hand drawn cute_4056724.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>-70</x>
+      <y>50</y>
+      <width>751</width>
+      <height>301</height>
+     </rect>
     </property>
     <property name="text">
-     <string>Log in as Distributor</string>
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>image-from-rawpixel-id-7037372-original.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>-20</y>
+      <width>881</width>
+      <height>771</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+
+background-color: rgb(207, 232, 255);
+</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>50</y>
-      <width>121</width>
-      <height>191</height>
+      <x>120</x>
+      <y>0</y>
+      <width>81</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="text">
@@ -227,10 +238,9 @@ border-color: #00007f;
     <property name="pixmap">
      <pixmap>—Pngtree—food elements hand drawn cute_4056724.png</pixmap>
     </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
    </widget>
+   <zorder>label_3</zorder>
+   <zorder>label_13</zorder>
    <zorder>label</zorder>
    <zorder>label_12</zorder>
    <zorder>label_2</zorder>
@@ -238,23 +248,20 @@ border-color: #00007f;
    <zorder>loginCustomer</zorder>
    <zorder>loginSupplier</zorder>
    <zorder>createAccount</zorder>
-   <zorder>loginDistributor</zorder>
-   <zorder>label_3</zorder>
+   <zorder>label_4</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>476</width>
-     <height>18</height>
+     <width>655</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources>
-  <include location="test.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

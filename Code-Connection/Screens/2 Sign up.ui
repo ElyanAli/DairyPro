@@ -59,7 +59,7 @@ border-radius: 5px;
 border-color: #00007f;</string>
     </property>
     <property name="text">
-     <string>************</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
@@ -70,6 +70,10 @@ border-color: #00007f;</string>
       <width>71</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
+color: rgb(0, 0, 127);</string>
     </property>
     <property name="text">
      <string>Password:</string>
@@ -83,6 +87,10 @@ border-color: #00007f;</string>
       <width>55</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
+color: rgb(0, 0, 127);</string>
     </property>
     <property name="text">
      <string>Name:</string>
@@ -108,7 +116,7 @@ border-color: #00007f;</string>
      <string/>
     </property>
     <property name="text">
-     <string>Sami Ali</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLineEdit" name="reEnterPassword">
@@ -128,7 +136,7 @@ border-radius: 5px;
 border-color: #00007f;</string>
     </property>
     <property name="text">
-     <string>************</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
@@ -139,6 +147,10 @@ border-color: #00007f;</string>
       <width>131</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
+color: rgb(0, 0, 127);</string>
     </property>
     <property name="text">
      <string>Re-Enter Password:</string>
@@ -152,6 +164,10 @@ border-color: #00007f;</string>
       <width>131</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
+color: rgb(0, 0, 127);</string>
     </property>
     <property name="text">
      <string>Phone Number:</string>
@@ -177,10 +193,10 @@ border-color: #00007f;</string>
      <string/>
     </property>
     <property name="text">
-     <string>313-1234455</string>
+     <string/>
     </property>
     <property name="cursorPosition">
-     <number>11</number>
+     <number>0</number>
     </property>
    </widget>
    <widget class="QLabel" name="label_9">
@@ -191,6 +207,10 @@ border-color: #00007f;</string>
       <width>131</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
+color: rgb(0, 0, 127);</string>
     </property>
     <property name="text">
      <string>Address:</string>
@@ -204,6 +224,10 @@ border-color: #00007f;</string>
       <width>131</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
+color: rgb(0, 0, 127);</string>
     </property>
     <property name="text">
      <string>Email:</string>
@@ -226,7 +250,7 @@ border-radius: 5px;
 border-color: #00007f;</string>
     </property>
     <property name="text">
-     <string>0313-1234455</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="label_11">
@@ -237,6 +261,10 @@ border-color: #00007f;</string>
       <width>131</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;Comic Sans MS&quot;;
+color: rgb(0, 0, 127);</string>
     </property>
     <property name="text">
      <string>User Type:</string>
@@ -265,12 +293,12 @@ border-color: #00007f;</string>
     </item>
     <item>
      <property name="text">
-      <string>Distributor</string>
+      <string>Supplier</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Supplier</string>
+      <string>Admin</string>
      </property>
     </item>
    </widget>
@@ -341,7 +369,7 @@ border-color: #00007f;</string>
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;222-A, XYZ Street, Gulshan-e-Iqbal&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_12">

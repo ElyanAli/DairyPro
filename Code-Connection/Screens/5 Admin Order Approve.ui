@@ -19,7 +19,7 @@
      <rect>
       <x>70</x>
       <y>80</y>
-      <width>541</width>
+      <width>311</width>
       <height>192</height>
      </rect>
     </property>
@@ -78,9 +78,9 @@ QTableWidget::item:selected {
    <widget class="QPushButton" name="approveOrder">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>340</y>
-      <width>101</width>
+      <x>390</x>
+      <y>180</y>
+      <width>141</width>
       <height>31</height>
      </rect>
     </property>
@@ -101,9 +101,9 @@ border-color: #00007f;
    <widget class="QPushButton" name="closeButton">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>340</y>
-      <width>101</width>
+      <x>390</x>
+      <y>230</y>
+      <width>141</width>
       <height>31</height>
      </rect>
     </property>
@@ -124,10 +124,10 @@ border-color: #00007f;
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>300</y>
-      <width>121</width>
-      <height>16</height>
+      <x>390</x>
+      <y>90</y>
+      <width>201</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -141,10 +141,10 @@ font-color: rgb(0, 0, 127);</string>
    <widget class="QComboBox" name="employeeToBeAssigned">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>300</y>
-      <width>171</width>
-      <height>22</height>
+      <x>390</x>
+      <y>130</y>
+      <width>141</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">

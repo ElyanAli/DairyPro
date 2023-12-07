@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'c:\Users\hp\Documents\CS_Undergrad\Semester_3\DATABASE\bd_final_project\DairyPro\DB_ConnectionsFiles\admin\4 Admin dashboard.ui'
+# Form implementation generated from reading ui file 'c:\Users\hp\Documents\CS_Undergrad\Semester_3\DATABASE\DB project\DairyPro-main\Code-Connection\Screens\4 Admin dashboard.ui'
 #
 # Created by: PyQt6 UI code generator 6.5.2
 #
@@ -48,9 +48,9 @@ class Ui_MainWindow(object):
 "border-color: #00007f;\n"
 "")
         self.inventoryView.setObjectName("inventoryView")
-        self.orderVieAdminw = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.orderVieAdminw.setGeometry(QtCore.QRect(70, 190, 111, 91))
-        self.orderVieAdminw.setStyleSheet("background-color: rgb(174, 209, 255);\n"
+        self.currentOrders = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.currentOrders.setGeometry(QtCore.QRect(70, 190, 111, 91))
+        self.currentOrders.setStyleSheet("background-color: rgb(174, 209, 255);\n"
 "font: 10pt \"Comic Sans MS\";\n"
 "color: #00007f;\n"
 "border-style: outset;\n"
@@ -58,10 +58,10 @@ class Ui_MainWindow(object):
 "border-radius: 5px;\n"
 "border-color: #00007f;\n"
 "")
-        self.orderVieAdminw.setObjectName("orderVieAdminw")
-        self.manufactureView = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.manufactureView.setGeometry(QtCore.QRect(330, 190, 111, 91))
-        self.manufactureView.setStyleSheet("background-color: rgb(174, 209, 255);\n"
+        self.currentOrders.setObjectName("currentOrders")
+        self.manufactureProduct = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.manufactureProduct.setGeometry(QtCore.QRect(330, 190, 111, 91))
+        self.manufactureProduct.setStyleSheet("background-color: rgb(174, 209, 255);\n"
 "font: 10pt \"Comic Sans MS\";\n"
 "color: #00007f;\n"
 "border-style: outset;\n"
@@ -69,10 +69,10 @@ class Ui_MainWindow(object):
 "border-radius: 5px;\n"
 "border-color: #00007f;\n"
 "")
-        self.manufactureView.setObjectName("manufactureView")
-        self.rawmatView = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.rawmatView.setGeometry(QtCore.QRect(330, 80, 111, 91))
-        self.rawmatView.setStyleSheet("background-color: rgb(174, 209, 255);\n"
+        self.manufactureProduct.setObjectName("manufactureProduct")
+        self.rawMaterialView = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.rawMaterialView.setGeometry(QtCore.QRect(330, 80, 111, 91))
+        self.rawMaterialView.setStyleSheet("background-color: rgb(174, 209, 255);\n"
 "font: 10pt \"Comic Sans MS\";\n"
 "color: #00007f;\n"
 "border-style: outset;\n"
@@ -80,10 +80,10 @@ class Ui_MainWindow(object):
 "border-radius: 5px;\n"
 "border-color: #00007f;\n"
 "")
-        self.rawmatView.setObjectName("rawmatView")
-        self.distributorView_2 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.distributorView_2.setGeometry(QtCore.QRect(70, 300, 111, 91))
-        self.distributorView_2.setStyleSheet("background-color: rgb(174, 209, 255);\n"
+        self.rawMaterialView.setObjectName("rawMaterialView")
+        self.supplierView = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.supplierView.setGeometry(QtCore.QRect(70, 300, 111, 91))
+        self.supplierView.setStyleSheet("background-color: rgb(174, 209, 255);\n"
 "font: 10pt \"Comic Sans MS\";\n"
 "color: #00007f;\n"
 "border-style: outset;\n"
@@ -91,10 +91,10 @@ class Ui_MainWindow(object):
 "border-radius: 5px;\n"
 "border-color: #00007f;\n"
 "")
-        self.distributorView_2.setObjectName("distributorView_2")
-        self.distributorView_3 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.distributorView_3.setGeometry(QtCore.QRect(200, 300, 111, 91))
-        self.distributorView_3.setStyleSheet("background-color: rgb(174, 209, 255);\n"
+        self.supplierView.setObjectName("supplierView")
+        self.customerView = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.customerView.setGeometry(QtCore.QRect(200, 300, 111, 91))
+        self.customerView.setStyleSheet("background-color: rgb(174, 209, 255);\n"
 "font: 10pt \"Comic Sans MS\";\n"
 "color: #00007f;\n"
 "border-style: outset;\n"
@@ -102,10 +102,10 @@ class Ui_MainWindow(object):
 "border-radius: 5px;\n"
 "border-color: #00007f;\n"
 "")
-        self.distributorView_3.setObjectName("distributorView_3")
-        self.distributorView_4 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.distributorView_4.setGeometry(QtCore.QRect(330, 300, 111, 91))
-        self.distributorView_4.setStyleSheet("background-color: rgb(174, 209, 255);\n"
+        self.customerView.setObjectName("customerView")
+        self.exitDatabase = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.exitDatabase.setGeometry(QtCore.QRect(330, 300, 111, 91))
+        self.exitDatabase.setStyleSheet("background-color: rgb(174, 209, 255);\n"
 "font: 10pt \"Comic Sans MS\";\n"
 "color: #00007f;\n"
 "border-style: outset;\n"
@@ -113,7 +113,7 @@ class Ui_MainWindow(object):
 "border-radius: 5px;\n"
 "border-color: #00007f;\n"
 "")
-        self.distributorView_4.setObjectName("distributorView_4")
+        self.exitDatabase.setObjectName("exitDatabase")
         self.label_12 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_12.setGeometry(QtCore.QRect(150, 30, 201, 41))
         font = QtGui.QFont()
@@ -136,67 +136,67 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(parent=self.centralwidget)
         self.label.setGeometry(QtCore.QRect(110, 130, 31, 31))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\bd_final_project\\DairyPro\\DB_ConnectionsFiles\\admin\\prod.png"))
+        self.label.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\DB project\\DairyPro-main\\Code-Connection\\Screens\\prod.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(230, 130, 41, 31))
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\bd_final_project\\DairyPro\\DB_ConnectionsFiles\\admin\\pngwing.com.png"))
+        self.label_2.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\DB project\\DairyPro-main\\Code-Connection\\Screens\\pngwing.com.png"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(370, 130, 40, 32))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\bd_final_project\\DairyPro\\DB_ConnectionsFiles\\admin\\raw.png"))
+        self.label_3.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\DB project\\DairyPro-main\\Code-Connection\\Screens\\raw.png"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.label_5 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_5.setGeometry(QtCore.QRect(110, 240, 31, 31))
         self.label_5.setText("")
-        self.label_5.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\bd_final_project\\DairyPro\\DB_ConnectionsFiles\\admin\\order.png"))
+        self.label_5.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\DB project\\DairyPro-main\\Code-Connection\\Screens\\order.png"))
         self.label_5.setScaledContents(True)
         self.label_5.setObjectName("label_5")
         self.label_6 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_6.setGeometry(QtCore.QRect(230, 240, 51, 31))
         self.label_6.setText("")
-        self.label_6.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\bd_final_project\\DairyPro\\DB_ConnectionsFiles\\admin\\dist.png"))
+        self.label_6.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\DB project\\DairyPro-main\\Code-Connection\\Screens\\dist.png"))
         self.label_6.setScaledContents(True)
         self.label_6.setObjectName("label_6")
         self.label_7 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_7.setGeometry(QtCore.QRect(360, 240, 41, 31))
         self.label_7.setText("")
-        self.label_7.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\bd_final_project\\DairyPro\\DB_ConnectionsFiles\\admin\\fact.png"))
+        self.label_7.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\DB project\\DairyPro-main\\Code-Connection\\Screens\\fact.png"))
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
         self.label_8 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_8.setGeometry(QtCore.QRect(100, 350, 51, 31))
         self.label_8.setText("")
-        self.label_8.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\bd_final_project\\DairyPro\\DB_ConnectionsFiles\\admin\\supp.png"))
+        self.label_8.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\DB project\\DairyPro-main\\Code-Connection\\Screens\\supp.png"))
         self.label_8.setScaledContents(True)
         self.label_8.setObjectName("label_8")
         self.label_9 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_9.setGeometry(QtCore.QRect(230, 350, 41, 31))
         self.label_9.setText("")
-        self.label_9.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\bd_final_project\\DairyPro\\DB_ConnectionsFiles\\admin\\cust.png"))
+        self.label_9.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\DB project\\DairyPro-main\\Code-Connection\\Screens\\cust.png"))
         self.label_9.setScaledContents(True)
         self.label_9.setObjectName("label_9")
         self.label_10 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_10.setGeometry(QtCore.QRect(370, 360, 31, 21))
         self.label_10.setText("")
-        self.label_10.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\bd_final_project\\DairyPro\\DB_ConnectionsFiles\\admin\\ex.png"))
+        self.label_10.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\DB project\\DairyPro-main\\Code-Connection\\Screens\\ex.png"))
         self.label_10.setScaledContents(True)
         self.label_10.setObjectName("label_10")
         self.label_4.raise_()
         self.productView.raise_()
         self.distributorView.raise_()
         self.inventoryView.raise_()
-        self.orderVieAdminw.raise_()
-        self.manufactureView.raise_()
-        self.rawmatView.raise_()
-        self.distributorView_2.raise_()
-        self.distributorView_3.raise_()
-        self.distributorView_4.raise_()
+        self.currentOrders.raise_()
+        self.manufactureProduct.raise_()
+        self.rawMaterialView.raise_()
+        self.supplierView.raise_()
+        self.customerView.raise_()
+        self.exitDatabase.raise_()
         self.label_12.raise_()
         self.label.raise_()
         self.label_2.raise_()
@@ -225,10 +225,10 @@ class Ui_MainWindow(object):
         self.productView.setText(_translate("MainWindow", "Products"))
         self.distributorView.setText(_translate("MainWindow", "Distributors"))
         self.inventoryView.setText(_translate("MainWindow", "Inventory"))
-        self.orderVieAdminw.setText(_translate("MainWindow", "Orders"))
-        self.manufactureView.setText(_translate("MainWindow", "Manufacturing"))
-        self.rawmatView.setText(_translate("MainWindow", "Raw Materials"))
-        self.distributorView_2.setText(_translate("MainWindow", "Supplier"))
-        self.distributorView_3.setText(_translate("MainWindow", "Customers"))
-        self.distributorView_4.setText(_translate("MainWindow", "Exit Database"))
+        self.currentOrders.setText(_translate("MainWindow", "Orders"))
+        self.manufactureProduct.setText(_translate("MainWindow", "Manufacturing"))
+        self.rawMaterialView.setText(_translate("MainWindow", "Raw Materials"))
+        self.supplierView.setText(_translate("MainWindow", "Supplier"))
+        self.customerView.setText(_translate("MainWindow", "Customers"))
+        self.exitDatabase.setText(_translate("MainWindow", "Exit Database"))
         self.label_12.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#00007f;\">Administration</span></p><p><br/></p></body></html>"))

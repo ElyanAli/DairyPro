@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>499</width>
-    <height>622</height>
+    <width>560</width>
+    <height>719</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -79,29 +79,11 @@ QTableWidget::item:selected {
       <string>Quality Metric</string>
      </property>
     </column>
-   </widget>
-   <widget class="QPushButton" name="deleteButton">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>550</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(174, 209, 255);
-font: 10pt &quot;Comic Sans MS&quot;;
-color: #00007f;
-border-style: outset;
-border-width: 3px;
-border-radius: 5px;
-border-color: #00007f;
-</string>
-    </property>
-    <property name="text">
-     <string>Delete</string>
-    </property>
+    <column>
+     <property name="text">
+      <string>Stock</string>
+     </property>
+    </column>
    </widget>
    <widget class="QGroupBox" name="searched">
     <property name="geometry">
@@ -120,19 +102,6 @@ color:rgb(0, 0, 127)
     <property name="title">
      <string>Search</string>
     </property>
-    <widget class="QCheckBox" name="issueCheck">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>180</y>
-       <width>71</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>In Stock</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="searchButton">
      <property name="geometry">
       <rect>
@@ -161,7 +130,7 @@ border-color: #00007f;
       <rect>
        <x>30</x>
        <y>40</y>
-       <width>90</width>
+       <width>111</width>
        <height>111</height>
       </rect>
      </property>
@@ -199,9 +168,9 @@ border-color: #00007f;
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>130</x>
+       <x>150</x>
        <y>40</y>
-       <width>281</width>
+       <width>261</width>
        <height>111</height>
       </rect>
      </property>
@@ -288,10 +257,10 @@ border-color: #00007f;
      <string>Close</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="viewButton_2">
+   <widget class="QPushButton" name="addButton">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>350</x>
       <y>510</y>
       <width>121</width>
       <height>31</height>
@@ -314,7 +283,7 @@ border-color: #00007f;
    <widget class="QPushButton" name="viewButton">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>220</x>
       <y>510</y>
       <width>121</width>
       <height>31</height>
@@ -334,33 +303,10 @@ border-color: #00007f;
      <string>View</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="viewButton_3">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>510</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(174, 209, 255);
-font: 10pt &quot;Comic Sans MS&quot;;
-color: #00007f;
-border-style: outset;
-border-width: 3px;
-border-radius: 5px;
-border-color: #00007f;
-</string>
-    </property>
-    <property name="text">
-     <string>Edit</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>-10</x>
+      <x>0</x>
       <y>-10</y>
       <width>831</width>
       <height>691</height>
@@ -384,20 +330,18 @@ background-color: rgb(207, 232, 255);
    </widget>
    <zorder>label_5</zorder>
    <zorder>booksTableWidget</zorder>
-   <zorder>deleteButton</zorder>
    <zorder>searched</zorder>
    <zorder>closeButton</zorder>
-   <zorder>viewButton_2</zorder>
+   <zorder>addButton</zorder>
    <zorder>viewButton</zorder>
-   <zorder>viewButton_3</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>499</width>
-     <height>18</height>
+     <width>560</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>

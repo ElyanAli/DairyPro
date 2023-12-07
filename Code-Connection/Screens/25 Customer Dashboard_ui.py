@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'c:\Users\hp\Documents\CS_Undergrad\Semester_3\DATABASE\bd_final_project\DairyPro\DB_ConnectionsFiles\customer_sameer\25 customer dashboard final.ui'
+# Form implementation generated from reading ui file 'c:\Users\hp\Documents\CS_Undergrad\Semester_3\DATABASE\DB project\DairyPro-main\Code-Connection\Screens\25 Customer Dashboard.ui'
 #
 # Created by: PyQt6 UI code generator 6.5.2
 #
@@ -15,9 +15,9 @@ class Ui_MainWindow(object):
         MainWindow.resize(515, 317)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.prodView = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.prodView.setGeometry(QtCore.QRect(200, 120, 111, 91))
-        self.prodView.setStyleSheet("background-color: rgb(174, 209, 255);\n"
+        self.productView = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.productView.setGeometry(QtCore.QRect(200, 120, 111, 91))
+        self.productView.setStyleSheet("background-color: rgb(174, 209, 255);\n"
 "font: 10pt \"Comic Sans MS\";\n"
 "color: #00007f;\n"
 "border-style: outset;\n"
@@ -25,10 +25,10 @@ class Ui_MainWindow(object):
 "border-radius: 5px;\n"
 "border-color: #00007f;\n"
 "")
-        self.prodView.setObjectName("prodView")
-        self.d_orderView = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.d_orderView.setGeometry(QtCore.QRect(50, 120, 111, 91))
-        self.d_orderView.setStyleSheet("background-color: rgb(174, 209, 255);\n"
+        self.productView.setObjectName("productView")
+        self.orders = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.orders.setGeometry(QtCore.QRect(50, 120, 111, 91))
+        self.orders.setStyleSheet("background-color: rgb(174, 209, 255);\n"
 "font: 10pt \"Comic Sans MS\";\n"
 "color: #00007f;\n"
 "border-style: outset;\n"
@@ -36,10 +36,10 @@ class Ui_MainWindow(object):
 "border-radius: 5px;\n"
 "border-color: #00007f;\n"
 "")
-        self.d_orderView.setObjectName("d_orderView")
-        self.distributorView = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.distributorView.setGeometry(QtCore.QRect(350, 120, 111, 91))
-        self.distributorView.setStyleSheet("background-color: rgb(174, 209, 255);\n"
+        self.orders.setObjectName("orders")
+        self.cust_info = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.cust_info.setGeometry(QtCore.QRect(350, 120, 111, 91))
+        self.cust_info.setStyleSheet("background-color: rgb(174, 209, 255);\n"
 "font: 10pt \"Comic Sans MS\";\n"
 "color: #00007f;\n"
 "border-style: outset;\n"
@@ -47,7 +47,7 @@ class Ui_MainWindow(object):
 "border-radius: 5px;\n"
 "border-color: #00007f;\n"
 "")
-        self.distributorView.setObjectName("distributorView")
+        self.cust_info.setObjectName("cust_info")
         self.label_12 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_12.setGeometry(QtCore.QRect(150, 40, 201, 41))
         font = QtGui.QFont()
@@ -70,25 +70,25 @@ class Ui_MainWindow(object):
         self.label_5 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_5.setGeometry(QtCore.QRect(90, 170, 31, 31))
         self.label_5.setText("")
-        self.label_5.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\bd_final_project\\DairyPro\\DB_ConnectionsFiles\\customer_sameer\\order.png"))
+        self.label_5.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\DB project\\DairyPro-main\\Code-Connection\\Screens\\order.png"))
         self.label_5.setScaledContents(True)
         self.label_5.setObjectName("label_5")
         self.label = QtWidgets.QLabel(parent=self.centralwidget)
         self.label.setGeometry(QtCore.QRect(240, 170, 31, 31))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\bd_final_project\\DairyPro\\DB_ConnectionsFiles\\customer_sameer\\prod.png"))
+        self.label.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\DB project\\DairyPro-main\\Code-Connection\\Screens\\prod.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.label_9 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_9.setGeometry(QtCore.QRect(390, 170, 41, 31))
         self.label_9.setText("")
-        self.label_9.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\bd_final_project\\DairyPro\\DB_ConnectionsFiles\\customer_sameer\\cust.png"))
+        self.label_9.setPixmap(QtGui.QPixmap("c:\\Users\\hp\\Documents\\CS_Undergrad\\Semester_3\\DATABASE\\DB project\\DairyPro-main\\Code-Connection\\Screens\\cust.png"))
         self.label_9.setScaledContents(True)
         self.label_9.setObjectName("label_9")
         self.label_4.raise_()
-        self.prodView.raise_()
-        self.d_orderView.raise_()
-        self.distributorView.raise_()
+        self.productView.raise_()
+        self.orders.raise_()
+        self.cust_info.raise_()
         self.label_12.raise_()
         self.label_5.raise_()
         self.label.raise_()
@@ -108,7 +108,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.prodView.setText(_translate("MainWindow", "Products"))
-        self.d_orderView.setText(_translate("MainWindow", "Orders"))
-        self.distributorView.setText(_translate("MainWindow", "Customer Info"))
+        self.productView.setText(_translate("MainWindow", "Products"))
+        self.orders.setText(_translate("MainWindow", "Orders"))
+        self.cust_info.setText(_translate("MainWindow", "Customer Info"))
         self.label_12.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#00007f;\">Customer Dashboard</span></p></body></html>"))

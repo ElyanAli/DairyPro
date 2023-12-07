@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>349</width>
-    <height>262</height>
+    <width>398</width>
+    <height>289</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <widget class="QPushButton" name="supp_info">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>190</x>
       <y>100</y>
-      <width>111</width>
+      <width>131</width>
       <height>91</height>
      </rect>
     </property>
@@ -42,7 +42,7 @@ border-color: #00007f;
      <rect>
       <x>50</x>
       <y>100</y>
-      <width>111</width>
+      <width>131</width>
       <height>91</height>
      </rect>
     </property>
@@ -88,9 +88,9 @@ background-color: rgb(207, 232, 255);
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>40</x>
       <y>30</y>
-      <width>201</width>
+      <width>281</width>
       <height>41</height>
      </rect>
     </property>
@@ -104,7 +104,7 @@ background-color: rgb(207, 232, 255);
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;Supplier&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;Supplier Dashboard&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -120,7 +120,7 @@ background-color: rgb(207, 232, 255);
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>349</width>
+     <width>398</width>
      <height>26</height>
     </rect>
    </property>

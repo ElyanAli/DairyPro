@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>384</width>
-    <height>390</height>
+    <width>541</width>
+    <height>505</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <widget class="QCheckBox" name="cont_stat">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>280</y>
-      <width>121</width>
+      <x>200</x>
+      <y>290</y>
+      <width>141</width>
       <height>21</height>
      </rect>
     </property>
@@ -37,7 +37,7 @@ color:rgb(0, 0, 127)
      <rect>
       <x>69</x>
       <y>60</y>
-      <width>66</width>
+      <width>111</width>
       <height>111</height>
      </rect>
     </property>
@@ -98,8 +98,8 @@ color:rgb(0, 0, 127)
    <widget class="QPushButton" name="closeButton">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>310</y>
+      <x>210</x>
+      <y>320</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -171,7 +171,7 @@ background-color: rgb(207, 232, 255);
    <widget class="QLineEdit" name="name">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>190</x>
       <y>60</y>
       <width>141</width>
       <height>18</height>
@@ -191,7 +191,7 @@ border-color: #00007f;</string>
    <widget class="QLineEdit" name="price">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>190</x>
       <y>120</y>
       <width>141</width>
       <height>18</height>
@@ -211,9 +211,9 @@ border-color: #00007f;</string>
    <widget class="QTableWidget" name="booksTableWidget">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>190</x>
       <y>140</y>
-      <width>151</width>
+      <width>141</width>
       <height>141</height>
      </rect>
     </property>
@@ -252,7 +252,7 @@ QTableWidget::item:selected {
    <widget class="QLineEdit" name="category">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>190</x>
       <y>90</y>
       <width>141</width>
       <height>18</height>
@@ -284,8 +284,8 @@ border-color: #00007f;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>384</width>
-     <height>18</height>
+     <width>541</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
