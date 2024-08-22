@@ -3,6 +3,11 @@
 
 DairyPro is a comprehensive management system designed for dairy factories to streamline operations from raw material management to order processing. The application provides an intuitive interface for managing various aspects of the business including raw materials, factory operations, customer orders, and more. Built with Python, SQL, and PyQT6, DairyPro is an easy-to-use solution that enhances efficiency in dairy production and order tracking.
 
+## Authors
+- Elyan Ali Momin
+- Sarah Faisal Sikandar
+- Sameer Kamani
+
 ## Features
 
 - **Raw Material Management**: Keep track of raw materials, monitor stock levels, and manage supplies.
